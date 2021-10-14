@@ -1,21 +1,26 @@
 export default class Component {
 
-  constructor({ elements }) {
-    this.elements = elements;
+  constructor({ element }) {
+    this.element = element;
   }
 
-  attechElements(parent) {
+  render(parent) {
 
     switch (parent.nodeName) {
       case 'IMG': case 'INPUT':
+        throw new Error('### element img, input is not parent elemenet!');
         return;
     }
 
     const fragment = document.createDocumentFragment();
 
-    this.elements.forEach((element) => {
-      fragment.appendChild(element);
-    })
+    if (this.element?.length > 1) {
+      this.element.forEach((element) => {
+        fragment.appendChild(element);
+      });
+    } else {
+      fragment.appendChild(this.element);
+    }
 
     parent.appendChild(fragment);
   }
