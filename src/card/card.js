@@ -1,32 +1,14 @@
 import Component from "../component.js";
 
-export default class Card{
+export default class Card extends HTMLElement {
 
 
-  constructor({ title, content }) {
-    this.title = title;
-    this.content = content;
-
-    this.$wrapper = Component.createElement({ type: 'div', className: 'card-wrapper' });
-    this.$head = Component.createElement({ type: 'div', className: 'card-head', content: this.title });
-    this.$body = Component.createElement({ type: 'div', className: 'card-body', content: this.title });
-
-    this.style();
-    this.init();
+  constructor() {
+    super();
 
   }
 
-  init() {
 
-    if (typeof this.content === 'object') {
-      this.$body.appendChild(this.content);
-    } else if (typeof this.content === 'string') {
-      this.$body.textContent = this.content;
-    }
-
-    this.$wrapper.appendChild(this.$head);
-    this.$wrapper.appendChild(this.$body);
-  }
 
   style() {
     this.$wrapper.style.width = '100%';
@@ -46,7 +28,4 @@ export default class Card{
 
   }
 
-  get getElement() {
-    return this.$wrapper;
-  }
 };
