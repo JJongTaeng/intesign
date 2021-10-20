@@ -1,15 +1,16 @@
 import './index.js';
 import Card from "./component/card/card.js";
+import Column from "./component/grid/column.js";
+import Row from "./component/grid/row.js";
 
-let $card = document.createElement('inte-card');
 
-const headerSlot = Card.createHeader();
-const bodySlot = Card.createBody();
+// Column.create(Card.create('Hello', 'Intae'), {xxl: 8, xl: 8, lg: 8, md: 8, sm: 8, xs: 24}),
 
-$card.append(headerSlot, bodySlot);
-
-headerSlot.textContent = 'hello';
-bodySlot.textContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam amet architecto cumque dolorem eaque eligendi eos expedita natus necessitatibus nulla odit, porro quia repellat saepe sit sunt tempora veniam voluptatibus?';
-
-document.body.appendChild($card);
+document.body.append(
+  Row.create(
+    Column.create(Card.create('hello', 'intae'), { xxl: 8, xl: 8, lg: 8, md: 8, sm: 8, xs: 24 }),
+    Column.create(Card.create('hello', 'intae'), { xxl: 8, xl: 8, lg: 8, md: 8, sm: 8, xs: 24 }),
+    Column.create(Card.create('hello', 'intae'), { xxl: 8, xl: 8, lg: 8, md: 8, sm: 8, xs: 24 }),
+  ),
+);
 

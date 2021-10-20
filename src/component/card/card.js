@@ -1,26 +1,33 @@
 export default class Card extends HTMLElement {
 
+  $cardContainer
+  $cardHeader
+  $cardBody
+  $cardHeaderContent
+  $cardBodyContent
+  $slotHeader
+  $slotBody
+
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    const template = document.querySelector('.inte-card-template');
-    this.shadowRoot.append(this.initStyle(), template.content.cloneNode(true));
+    this.createElement();
   }
 
   connectedCallback() {
-    console.log('Custom element added to page.');
+    console.log('inte-card element added to page.');
   }
 
   disconnectedCallback() {
-    console.log('Custom element removed from page.');
+    console.log('inte-card element removed from page.');
   }
 
   adoptedCallback() {
-    console.log('Custom element moved to new page.');
+    console.log('inte-card element moved to new page.');
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log('Custom element attributes changed.');
+    console.log('inte-card element attributes changed.');
   }
 
 
@@ -50,11 +57,39 @@ export default class Card extends HTMLElement {
             padding: 8px;
         }
         .card-body-content {
-
         }
     `
 
     return styleElement;
+  }
+
+  createElement() {
+    this.$cardContainer = document.createElement('div');
+
+    this.$cardHeader = document.createElement('div');
+    this.$cardBody = document.createElement('div');
+
+    this.$cardHeaderContent = document.createElement('span');
+    this.$cardBodyContent = document.createElement('span');
+
+    this.$slotHeader = document.createElement('slot');
+    this.$slotBody = document.createElement('slot');
+
+    this.$cardContainer.setAttribute('class', 'card-container');
+    this.$cardHeader.setAttribute('class', 'card-header');
+    this.$cardBody.setAttribute('class', 'card-body');
+    this.$cardHeaderContent.setAttribute('class', 'card-header-content');
+    this.$cardBodyContent.setAttribute('class', 'card-body-content');
+    this.$slotHeader.setAttribute('name', 'card-header-slot');
+    this.$slotBody.setAttribute('name', 'card-body-slot');
+
+    this.$cardHeaderContent.appendChild(this.$slotHeader);
+    this.$cardBodyContent.appendChild(this.$slotBody);
+    this.$cardContainer.append(this.$cardHeader, this.$cardBody);
+    this.$cardHeader.appendChild(this.$cardHeaderContent);
+    this.$cardBody.appendChild(this.$cardBodyContent);
+
+    this.shadowRoot.append(this.initStyle(), this.$cardContainer);
   }
 
   static createHeader() {
@@ -67,6 +102,20 @@ export default class Card extends HTMLElement {
     const node = document.createElement('div');
     node.setAttribute('slot', 'card-body-slot');
     return node;
+  }
+
+  static create(head, body) {
+    const $card = document.createElement('inte-card');
+
+    const headerSlot = Card.createHeader();
+    const bodySlot = Card.createBody();
+
+    $card.append(headerSlot, bodySlot);
+
+    headerSlot.append(head);
+    bodySlot.append(body);
+
+    return $card;
   }
 
 }
