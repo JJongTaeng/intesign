@@ -75,8 +75,6 @@ export default class Column extends HTMLElement{
   initStyle() {
     const styleElement = document.createElement('style');
     styleElement.textContent = `
-      .container {
-      }
     `;
 
     return styleElement;
@@ -98,34 +96,37 @@ export default class Column extends HTMLElement{
 
   updateStyle({ xxl, xl, lg, md, sm, xs }) {
     this.shadowRoot.querySelector('style').textContent = `
+      :host {
+        margin: 10px;
+      }
       @media(max-width: 576px) {
-        .container {
-            width: ${xs * 4.166666}%;
+        :host {
+            width: calc(${xs * 4.166666}% - 20px);
         }
       }
       @media(min-width: 576px) and (max-width: 768px) {
-        .container {
-            width: ${sm * 4.166666}%;
+        :host {
+            width: calc(${sm * 4.166666}% - 20px);
         }
       }
       @media(min-width: 768px) and (max-width: 992px) {
-        .container {
-            width: ${md * 4.166666}%;
+        :host {
+            width: calc(${md * 4.166666}% - 20px);
         }
       }
       @media(min-width: 992px) and (max-width: 1200px) {
-        .container {
-            width: ${lg * 4.166666}%;
+        :host {
+            width: calc(${lg * 4.166666}% - 20px);
         }
       }
       @media(min-width: 1200px) and (max-width: 1600px) {
-        .container {
-            width: ${xl * 4.166666}%;
+        :host {
+            width: calc(${xl * 4.166666}% - 20px);
         }
       }
       @media(min-width: 1600px) {
-        .container {
-            width: ${xxl * 4.166666}%;
+        :host {
+            width: calc(${xxl * 4.166666}% - 20px);
         }
       }
     `
@@ -141,6 +142,7 @@ export default class Column extends HTMLElement{
 
   static create(node, { xxl, xl, lg, md, sm, xs }) {
     const $col = document.createElement('inte-column');
+
     $col.setAttribute('xxl', xxl);
     $col.setAttribute('xl', xl);
     $col.setAttribute('lg', lg);

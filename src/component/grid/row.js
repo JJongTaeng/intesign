@@ -8,44 +8,40 @@ export default class Row extends HTMLElement{
     this.createElement();
   }
 
-  initStyle() {
-    const styleElement = document.createElement('style');
-    styleElement.textContent = `
-      .container {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-      }
-    `;
-
-    return styleElement;
+  connectedCallback() {
   }
 
   createElement() {
     this.$container = document.createElement('div');
     this.$slot = document.createElement('slot');
 
+    this.$container.setAttribute('class', 'container');
     this.$slot.setAttribute('name', 'row-slot');
 
     this.$container.appendChild(this.$slot);
 
-    this.shadowRoot.append(this.initStyle(), this.$container);
+    this.shadowRoot.append( this.$container);
   }
 
   static createRowSlot() {
     const node = document.createElement('div');
     node.setAttribute('slot', 'row-slot');
-    node.setAttribute('class', 'container');
 
     return node;
   }
 
   static create(...rest) {
     const $row = document.createElement('inte-row');
-    const slot = Row.createRowSlot();
+    const $slotDiv = Row.createRowSlot();
 
-    slot.append(...rest);
-    $row.append(slot);
+
+    $slotDiv.setAttribute('class', 'column-container');
+    $slotDiv.style.display = 'flex';
+    $slotDiv.style.width = '100%';
+    $slotDiv.style.flexWrap = 'wrap';
+
+    $slotDiv.append(...rest);
+    $row.append($slotDiv);
 
     return $row;
   }
