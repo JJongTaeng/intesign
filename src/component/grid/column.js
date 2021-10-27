@@ -1,14 +1,14 @@
-
-export default class Column extends HTMLElement{
-  $container
-  span = {
-
+export default class Column extends HTMLElement {
+  get observedAttributes() {
+    return ['xxl', 'xl', 'lg', 'md', 'sm', 'xs']
   }
 
+  $container
+  span = {}
 
   constructor() {
     super();
-    this.attachShadow({ mode: 'open'});
+    this.attachShadow({ mode: 'open' });
     this.createElement();
   }
 
@@ -27,9 +27,8 @@ export default class Column extends HTMLElement{
   }
 
   attributeChangedCallback(name, prev, current) {
-    console.log(current);
     if (prev !== current) {
-      switch(name) {
+      switch (name) {
         case 'xxl':
           this.span = {
             ...this.span,
