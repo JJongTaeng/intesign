@@ -15,19 +15,15 @@ export default class Card extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log('inte-card element added to page.');
   }
 
   disconnectedCallback() {
-    console.log('inte-card element removed from page.');
   }
 
   adoptedCallback() {
-    console.log('inte-card element moved to new page.');
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log('inte-card element attributes changed.');
   }
 
 
