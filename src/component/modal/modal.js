@@ -1,3 +1,5 @@
+import Button from "../form/button.js";
+
 export default class Modal extends HTMLElement {
   static get observedAttributes() {
     return ['visible', 'width', 'height'];
@@ -176,10 +178,10 @@ export default class Modal extends HTMLElement {
 
     { // create button
       this.$buttonWrapper = document.createElement('div');
-      this.$okButton = document.createElement('button');
-      this.$okButton.textContent = 'OK';
-      this.$cancelButton = document.createElement('button');
-      this.$cancelButton.textContent = 'CANCEL';
+      this.$okButton = document.createElement('inte-button');
+      Button.setName(this.$okButton, 'OK')
+      this.$cancelButton = document.createElement('inte-button');
+      Button.setName(this.$cancelButton, 'CANCEL')
     }
   }
 
