@@ -1,5 +1,21 @@
 export default class Row extends HTMLElement{
 
+  static create(...rest) {
+    const $row = document.createElement('inte-row');
+    const $slotDiv = Row.createRowSlot();
+
+
+    $slotDiv.setAttribute('class', 'column-container');
+    $slotDiv.style.display = 'flex';
+    $slotDiv.style.width = '100%';
+    $slotDiv.style.flexWrap = 'wrap';
+
+    $slotDiv.append(...rest);
+    $row.append($slotDiv);
+
+    return $row;
+  }
+
   $container
 
   constructor() {

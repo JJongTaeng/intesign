@@ -47,7 +47,6 @@ export default class Card extends HTMLElement {
             border-bottom: 1px solid #eee;
         }
         .card-header-content {
-          font-size: 1.2rem;
         }
         .card-body {
             padding: 8px;

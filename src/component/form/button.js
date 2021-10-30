@@ -1,6 +1,6 @@
 export default class Button extends HTMLElement {
   static get observedAttributes() {
-    return ['name'];
+    return ['name', 'size'];
   }
 
   static setName($button, name) {

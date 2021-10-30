@@ -120,7 +120,6 @@ export default class Modal extends HTMLElement {
       }
       .content {
         width: 50vw;
-        height: 50vh;
         background: white;
         border: 1px solid #eee;
         border-radius: 3px;
@@ -138,7 +137,6 @@ export default class Modal extends HTMLElement {
       .body {
         padding: 16px;
         height: 100%;
-        overflow: scroll;
       }
       .footer {
         position: relative;
