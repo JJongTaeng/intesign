@@ -114,6 +114,8 @@ Modal.onOk($modal, (e) => {
   Modal.close($modal);
 });
 ```
+![img_1.png](img_1.png)
+
 # Message
 ### method
 - create
@@ -142,7 +144,7 @@ Modal.onOk($modal, (e) => {
     - visible: Message Element에 설정할 visible
       - open
       - close
-
+![img_2.png](img_2.png)
 
 # Example
 더 많은 작업을 진행하면서 추가할 예정입니다.
