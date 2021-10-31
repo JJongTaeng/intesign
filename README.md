@@ -46,7 +46,6 @@ Card.create('Title', `
   Aliquid autem dolorum impedit neque optio provident sunt?
 `)
 ```
-![img.png](image/img.png)
 
 # Modal
 ### method
@@ -123,7 +122,6 @@ Modal.onOk($modal, (e) => {
   Modal.close($modal);
 });
 ```
-![img_1.png](image/img_1.png)
 
 # Message
 ### method
@@ -153,7 +151,6 @@ Modal.onOk($modal, (e) => {
     - visible: Message Element에 설정할 visible
       - open
       - close
-![img_2.png](image/img_2.png)
 
 # Example
 더 많은 작업을 진행하면서 추가할 예정입니다.

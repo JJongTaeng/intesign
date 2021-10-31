@@ -1,0 +1,11 @@
+.idea
+src/app.js
+src/index.html
+node_modules
+dist
+Process.md
+README.md
+.gitattributes
+.gitignore
+image
+
