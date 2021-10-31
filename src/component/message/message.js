@@ -95,7 +95,7 @@ export default class Message extends HTMLElement {
         
         background: white;
         border: 1px solid #eee;
-        border-radius: 3px;
+        border-radius: 2px;
         box-shadow: 0px 0px 16px 5px rgba(0, 0, 0, .2);
         
         display: flex;

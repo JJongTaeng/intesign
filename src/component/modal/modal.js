@@ -49,6 +49,10 @@ export default class Modal extends HTMLElement {
     $modal.$header.replaceChildren();
   }
 
+  onclose() {
+
+  }
+
   $container;
   $content;
   $header;
@@ -116,18 +120,18 @@ export default class Modal extends HTMLElement {
         display: flex;
         justify-content: center;
         align-items: center;
-        
       }
       .content {
         width: 50vw;
         background: white;
         border: 1px solid #eee;
-        border-radius: 3px;
+        border-radius: 2px;
         display: flex;
         flex-direction: column;
+        
       }
       .header {
-        height: 60px;
+        height: 40px;
         border-bottom: 1px solid #eee;
         padding: 10px;
         display: flex;
@@ -140,7 +144,7 @@ export default class Modal extends HTMLElement {
       }
       .footer {
         position: relative;
-        height: 60px;
+        height: 40px;
         border-top: 1px solid #eee;
         padding: 10px;
         
@@ -168,12 +172,6 @@ export default class Modal extends HTMLElement {
       this.$footer = document.createElement('div');
     }
 
-    { // create Title Slot
-      this.$titleSlot = document.createElement('slot');
-      this.$titleSlot.setAttribute('name', 'modal-title');
-      this.$titleSlot.textContent = 'Title';
-    }
-
     { // create button
       this.$buttonWrapper = document.createElement('div');
       this.$okButton = document.createElement('inte-button');
@@ -196,7 +194,6 @@ export default class Modal extends HTMLElement {
   }
 
   appendDomElem() {
-    this.$header.append(this.$titleSlot);
     this.$content.append(this.$header, this.$body, this.$footer);
     this.$container.appendChild(this.$content);
     this.$buttonWrapper.append(this.$okButton, this.$cancelButton)

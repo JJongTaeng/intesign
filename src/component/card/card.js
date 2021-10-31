@@ -31,15 +31,15 @@ export default class Card extends HTMLElement {
     const styleElement = document.createElement('style');
 
     styleElement.textContent = `
+
         .card-container {
           width: 100%;
-
-          border-radius: 4px;
+          border-radius: 2px;
 
           display: flex;
           flex-direction: column;
           border: 1px solid #eee;
-
+          background: white;
         }
 
         .card-header {

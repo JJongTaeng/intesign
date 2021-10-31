@@ -1,0 +1,30 @@
+{
+  "name": "intesign",
+  "version": "1.0.0",
+  "description": "Intesign is Vanilla JavaScript Design Library",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JJongTaeng/intesign.git"
+  },
+  "files": [
+    "src/component"
+  ],
+  "keywords": [
+    "intesign"
+  ],
+  "engines": {
+    "node": ">=0.10.3 <17",
+    "npm" : "~7.21.0"
+  },
+  "author": "JJongTaeng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JJongTaeng/intesign/issues"
+  },
+  "homepage": "https://github.com/JJongTaeng/intesign#readme"
+}
