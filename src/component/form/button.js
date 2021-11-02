@@ -1,6 +1,6 @@
 export default class Button extends HTMLElement {
   static get observedAttributes() {
-    return ['name', 'size'];
+    return ['name', 'size', 'style'];
   }
 
   static setName($button, name) {
@@ -24,17 +24,17 @@ export default class Button extends HTMLElement {
     this.setAttribute('size', 'normal');
   }
 
-  attributeChangedCallback(name, prev, current) {
+  attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case 'name':
-        this.$button.textContent = current;
+        this.$button.textContent = newValue;
         break;
       case 'size':
-        if(current === 'large') {
+        if(newValue === 'large') {
           this.$button.classList.remove('large');
           this.$button.classList.add('large');
         }
-        else if(current === 'small') {
+        else if(newValue === 'small') {
           this.$button.classList.remove('large');
           this.$button.classList.add('small');
         }
@@ -42,6 +42,9 @@ export default class Button extends HTMLElement {
           this.$button.classList.remove('large');
           this.$button.classList.remove('small');
         }
+        break;
+      case 'style':
+        this.updateStyle(newValue);
         break;
     }
   }
@@ -51,9 +54,13 @@ export default class Button extends HTMLElement {
     this.$button.classList.add('button');
   }
 
+  updateStyle(style) {
+    this.$style.textContent = this.$style.textContent + style;
+  }
+
   initStyle() {
-    const $style = document.createElement('style');
-    $style.textContent = `
+    this.$style = document.createElement('style');
+    this.$style.textContent = `
       .button {
         height: 30px;
         background: dodgerblue;
@@ -74,7 +81,7 @@ export default class Button extends HTMLElement {
       }
     `
 
-    return $style
+    return this.$style
   }
 
 }

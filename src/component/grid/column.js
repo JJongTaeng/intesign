@@ -1,6 +1,6 @@
 export default class Column extends HTMLElement {
   get observedAttributes() {
-    return ['xxl', 'xl', 'lg', 'md', 'sm', 'xs']
+    return ['xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'style']
   }
 
   $container
@@ -21,54 +21,61 @@ export default class Column extends HTMLElement {
     this.span.sm = this.getAttribute('sm')
     this.span.xs = this.getAttribute('xs')
 
-    this.updateStyle({
+    this.updateSpan({
       ...this.span,
     })
   }
 
-  attributeChangedCallback(name, prev, current) {
-    if (prev !== current) {
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue !== newValue) {
       switch (name) {
         case 'xxl':
           this.span = {
             ...this.span,
-            xxl: current,
+            xxl: newValue,
           }
           break;
         case 'xl':
           this.span = {
             ...this.span,
-            xl: current,
+            xl: newValue,
           }
           break;
         case 'lg':
           this.span = {
             ...this.span,
-            lg: current,
+            lg: newValue,
           }
           break;
         case 'md':
           this.span = {
             ...this.span,
-            md: current,
+            md: newValue,
           }
           break;
         case 'sm':
           this.span = {
             ...this.span,
-            sm: current,
+            sm: newValue,
           }
           break;
         case 'xs':
           this.span = {
             ...this.span,
-            xs: current,
+            xs: newValue,
           }
+          break;
+        case 'style':
+          this.updateStyle(newValue);
           break;
       }
 
-      this.updateStyle({ ...this.span });
+      this.updateSpan({ ...this.span });
     }
+  }
+
+  updateStyle(style) {
+    this.$style.textContent = this.$style.textContent + style;
   }
 
   initStyle() {
@@ -93,7 +100,8 @@ export default class Column extends HTMLElement {
   }
 
 
-  updateStyle({ xxl, xl, lg, md, sm, xs }) {
+
+  updateSpan({ xxl, xl, lg, md, sm, xs }) {
     this.shadowRoot.querySelector('style').textContent = `
       :host {
         margin: 10px;

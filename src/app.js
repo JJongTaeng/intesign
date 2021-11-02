@@ -26,28 +26,29 @@ Aliquid autem dolorum impedit neque optio provident sunt?
   5:`Lorem ipsum dolor sit amet, consectetur adipisicing elit.`
 }
 
+const $Row = Row.create(
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
+  );
 
 document.body.append(
-  Row.create(
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(Card.create('Title', loremStr[parseInt(Math.random() * 5) + 1]), { xxl: 4, xl: 4, lg: 8, md: 8, sm: 12, xs: 24 }),
-  ),
+  $Row,
   $modal,
 );
 
@@ -69,6 +70,11 @@ document.querySelector('.modal').addEventListener('click', (e) => {
 const $message = document.createElement('inte-message');
 Message.setMessage($message, '데이터를 받아오지 못했습니다.');
 Message.setType($message, 'error');
+$message.setAttribute('style', `
+  .container {
+    background: blue;
+  }
+`)
 document.body.append($message);
 
 document.querySelector('.message').addEventListener('click', (e) => {

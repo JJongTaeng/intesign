@@ -2,7 +2,7 @@ import Button from "../form/button.js";
 
 export default class Modal extends HTMLElement {
   static get observedAttributes() {
-    return ['visible', 'width', 'height'];
+    return ['visible', 'width', 'height', 'style'];
   }
 
   static open($modal) {
@@ -89,6 +89,10 @@ export default class Modal extends HTMLElement {
         break;
       case 'height':
         this.$content.style.height = `${newValue}vh`;
+        break;
+      case 'style':
+        this.updateStyle(newValue);
+        break;
     }
   }
 
@@ -104,6 +108,10 @@ export default class Modal extends HTMLElement {
 
   changeVisible(visible) {
     this.setAttribute('visible', visible);
+  }
+
+  updateStyle(style) {
+    this.$style.textContent = this.$style.textContent + style;
   }
 
   initStyle() {

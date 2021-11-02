@@ -1,6 +1,6 @@
 export default class Message extends HTMLElement {
   static get observedAttributes() {
-    return ['message', 'type', 'visible'];
+    return ['message', 'type', 'visible', 'style'];
   }
 
   static create() {
@@ -26,30 +26,36 @@ export default class Message extends HTMLElement {
     this.createElement();
     this.setClassName();
     this.appendElements();
-    this.shadowRoot.append(this.initStyle(), this.$middle);
+    this.initStyle();
+    this.shadowRoot.append(this.$style, this.$middle);
   }
 
   connectedCallback() {
   }
 
-  attributeChangedCallback(name, prev, current) {
+  attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case 'message':
-        this.$content.textContent = current;
+        this.$content.textContent = newValue;
         break;
       case 'type':
-        if(current === 'info') {
+        if(newValue === 'info') {
           this.$content.style.color = 'dodgerblue';
-        } else if(current === 'error') {
+        } else if(newValue === 'error') {
           this.$content.style.color = 'crimson';
         }
         break;
       case 'visible':
-        if(current === 'open') {
+        if(newValue === 'open') {
           this.$container.style.transform = 'scale(1, 1)';
         } else {
           this.$container.style.transform = 'scale(1, 0)';
         }
+        break;
+      case 'style':
+        this.updateStyle(newValue);
+        break;
+
     }
   }
 
@@ -71,9 +77,13 @@ export default class Message extends HTMLElement {
     this.$container.append(this.$content);
   }
 
+  updateStyle(style) {
+    this.$style.textContent = this.$style.textContent + style;
+  }
+
   initStyle() {
-    const $style = document.createElement('style');
-    $style.textContent = `
+    this.$style = document.createElement('style');
+    this.$style.textContent = `
       .middle {
         position: absolute;
         top: 0;
@@ -105,8 +115,6 @@ export default class Message extends HTMLElement {
         
       }
     `
-
-    return $style;
   }
 }
 

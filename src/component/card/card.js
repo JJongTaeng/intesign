@@ -1,4 +1,7 @@
 export default class Card extends HTMLElement {
+  static get observedAttributes() {
+    return ['style'];
+  }
 
   $cardContainer
   $cardHeader
@@ -24,13 +27,21 @@ export default class Card extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
+    switch (name) {
+      case 'style':
+        this.updateStyle(newValue);
+        break;
+    }
   }
 
+  updateStyle(style) {
+    this.$style.textContent = this.$style.textContent + style;
+  }
 
   initStyle() {
-    const styleElement = document.createElement('style');
+    this.$style = document.createElement('style');
 
-    styleElement.textContent = `
+    this.$style.textContent = `
 
         .card-container {
           width: 100%;
@@ -55,7 +66,7 @@ export default class Card extends HTMLElement {
         }
     `
 
-    return styleElement;
+    return this.$style;
   }
 
   createElement() {

@@ -1,3 +1,3 @@
-export default class Popconfirm {
+export default class PopConfirm {
 
 }

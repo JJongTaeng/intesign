@@ -3,13 +3,13 @@ export default class Input extends HTMLElement {
     return ['type', 'style'];
   }
 
-  attributeChangedCallback(name, prev, current) {
+  attributeChangedCallback(name, oldValue, newValue) {
     switch (name) {
       case 'type':
         this.input.setAttribute('type', current);
         break;
       case 'style':
-        this.updateStyle(current);
+        this.updateStyle(newValue);
         break;
     }
   }
@@ -28,8 +28,8 @@ export default class Input extends HTMLElement {
 
   }
 
-  updateStyle(styleStr) {
-    this.$style = this.$style + styleStr;
+  updateStyle(style) {
+    this.$style.textContent = this.$style.textContent + style;
   }
 
   initStyle() {
