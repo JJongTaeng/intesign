@@ -53,11 +53,23 @@ export default class Modal extends HTMLElement {
 
   }
 
+  getClickPosition(e) {
+    this.mousePosition.x = e.pageX;
+    this.mousePosition.y = e.pageY;
+
+    console.log(this.mousePosition);
+  }
+
   $container;
   $content;
   $header;
   $body;
   $footer;
+
+  mousePosition = {
+    x: 0,
+    y: 0,
+  };
   constructor() {
     super();
     { // 초기화
@@ -67,7 +79,7 @@ export default class Modal extends HTMLElement {
       this.appendDomElem();
       this.clickHandler();
     }
-
+    document.addEventListener('click', this.getClickPosition.bind(this));
     this.shadowRoot.append(this.initStyle(), this.$container);
   }
 
@@ -79,6 +91,7 @@ export default class Modal extends HTMLElement {
     switch (name) {
       case 'visible':
         if (newValue === 'true') {
+          this.$container.style.transformOrigin = `${this.mousePosition.x}px ${this.mousePosition.y}px`
           this.$container.style.transform = 'scale(1, 1)'
         } else {
           this.$container.style.transform = 'scale(0, 0)'
@@ -128,6 +141,7 @@ export default class Modal extends HTMLElement {
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: 0.3s;
       }
       .content {
         width: 50vw;

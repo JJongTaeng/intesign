@@ -21,5 +21,5 @@ export default class PopConfirm extends HTMLElement{
     return this.$style;
   }
 
-  
+
 }
