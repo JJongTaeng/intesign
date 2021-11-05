@@ -56,8 +56,6 @@ export default class Modal extends HTMLElement {
   getClickPosition(e) {
     this.mousePosition.x = e.pageX;
     this.mousePosition.y = e.pageY;
-
-    console.log(this.mousePosition);
   }
 
   $container;
@@ -79,7 +77,7 @@ export default class Modal extends HTMLElement {
       this.appendDomElem();
       this.clickHandler();
     }
-    document.addEventListener('click', this.getClickPosition.bind(this));
+    document.addEventListener('mousedown', this.getClickPosition.bind(this), true);
     this.shadowRoot.append(this.initStyle(), this.$container);
   }
 
@@ -91,10 +89,20 @@ export default class Modal extends HTMLElement {
     switch (name) {
       case 'visible':
         if (newValue === 'true') {
-          this.$container.style.transformOrigin = `${this.mousePosition.x}px ${this.mousePosition.y}px`
-          this.$container.style.transform = 'scale(1, 1)'
+          this.updateStyle`
+            .container {
+              transform-origin: ${this.mousePosition.x}px ${this.mousePosition.y}px;
+              transform: scale(1, 1);
+              opacity: 1;
+            }
+          `;
         } else {
-          this.$container.style.transform = 'scale(0, 0)'
+          this.updateStyle`
+            .container {
+              transform: scale(0, 0);
+              opacity: 0;
+            }
+          `;
         }
         break;
       case 'width':
@@ -104,7 +112,7 @@ export default class Modal extends HTMLElement {
         this.$content.style.height = `${newValue}vh`;
         break;
       case 'style':
-        this.updateStyle(newValue);
+        this.updateStyle`${newValue}`;
         break;
     }
   }
@@ -123,13 +131,21 @@ export default class Modal extends HTMLElement {
     this.setAttribute('visible', visible);
   }
 
-  updateStyle(style) {
-    this.$style.textContent = this.$style.textContent + style;
+  updateStyle(style, ...arg) {
+    const raw = style.raw.reduce((prev, current, index) => {
+      if(arg.length > 0) {
+        console.log(index);
+        return prev + arg[index-1] + current
+      } else {
+        return prev + current;
+      }
+    });
+    this.$style.textContent = this.$style.textContent + raw;
   }
 
   initStyle() {
-    const $style = document.createElement('style');
-    $style.textContent = `
+    this.$style = document.createElement('style');
+    this.$style.textContent = `
       .container {
         position: fixed;
         left: 0;
@@ -183,7 +199,7 @@ export default class Modal extends HTMLElement {
       }
     `;
 
-    return $style;
+    return this.$style;
   }
   createElement() {
     { // create modal structure
