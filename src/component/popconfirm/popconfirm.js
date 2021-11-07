@@ -8,8 +8,15 @@ export default class PopConfirm extends HTMLElement{
 
   createElement() {
     this.$container = document.createElement('div');
+  }
 
-
+  attributeChangedCallback(name, oldValue, newValue) {
+    switch(name) {
+      case 'okText':
+        break;
+      case 'cancelText':
+        break;
+    }
   }
 
   initStyle() {
