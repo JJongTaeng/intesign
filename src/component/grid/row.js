@@ -52,7 +52,6 @@ export default class Row extends HTMLElement{
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log(newValue);
       switch (name) {
         case 'style':
           this.updateStyle(newValue);

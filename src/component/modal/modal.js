@@ -134,7 +134,6 @@ export default class Modal extends HTMLElement {
   updateStyle(style, ...arg) {
     const raw = style.raw.reduce((prev, current, index) => {
       if(arg.length > 0) {
-        console.log(index);
         return prev + arg[index-1] + current
       } else {
         return prev + current;
