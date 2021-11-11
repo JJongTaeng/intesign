@@ -74,6 +74,7 @@ export default class PopConfirm extends HTMLElement{
     })
   }
   getClickPosition(e) {
+    console.log(e);
     this.mousePosition.x = e.pageX;
     this.mousePosition.y = e.pageY;
   }
@@ -84,7 +85,8 @@ export default class PopConfirm extends HTMLElement{
         if (newValue === 'true') {
           this.updateStyle`
             .container {
-              transform-origin: ${this.mousePosition.x}px ${this.mousePosition.y}px;
+              left: ${this.mousePosition.x}px;
+              top: ${this.mousePosition.y}px;
               transform: scale(1, 1);
               opacity: 1;
             }
@@ -134,9 +136,10 @@ export default class PopConfirm extends HTMLElement{
         min-width: 160px;
         box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, .4);
         
+        transform-origin: 0 0;
         transform: scale(0, 0);
         opacity: 0;
-
+        transition: 0.2s;
       }
       .message {
         margin: 10px;
