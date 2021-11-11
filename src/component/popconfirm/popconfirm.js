@@ -2,8 +2,13 @@ import Button from "../form/button.js";
 
 export default class PopConfirm extends HTMLElement{
   static get observedAttributes() {
-    return ['okText', 'cancelText', 'style'];
+    return ['okText', 'cancelText', 'style', 'visible'];
   }
+
+  mousePosition = {
+    x: 0,
+    y: 0,
+  };
 
   constructor() {
     super();
@@ -16,9 +21,15 @@ export default class PopConfirm extends HTMLElement{
     this.$slot = document.createElement('slot');
     this.$slot.setAttribute('name', 'popconfirm');
     this.shadowRoot.append(this.initStyle(), this.$slot ,this.$container);
+
+    document.addEventListener('mousedown', this.getClickPosition.bind(this), true);
+    this.open();
+    this.cancel();
+
   }
 
   createElement() {
+
     this.$container = document.createElement('div');
     this.$message = document.createElement('div');
     this.$message.textContent = 'Any Message';
@@ -29,7 +40,6 @@ export default class PopConfirm extends HTMLElement{
 
     this.$ok = document.createElement('inte-button');
     Button.setName(this.$ok, 'Ok');
-
 
   }
 
@@ -52,8 +62,42 @@ export default class PopConfirm extends HTMLElement{
     })
   }
 
+  open() {
+    this.$slot.addEventListener('click', (e) => {
+      this.setAttribute('visible', 'true');
+    })
+  }
+
+  cancel() {
+    this.$cancel.addEventListener('click', (e) => {
+      this.setAttribute('visible', 'false');
+    })
+  }
+  getClickPosition(e) {
+    this.mousePosition.x = e.pageX;
+    this.mousePosition.y = e.pageY;
+  }
+
   attributeChangedCallback(name, oldValue, newValue) {
     switch(name) {
+      case 'visible':
+        if (newValue === 'true') {
+          this.updateStyle`
+            .container {
+              transform-origin: ${this.mousePosition.x}px ${this.mousePosition.y}px;
+              transform: scale(1, 1);
+              opacity: 1;
+            }
+          `;
+        } else {
+          this.updateStyle`
+            .container {
+              transform: scale(0, 0);
+              opacity: 0;
+            }
+          `;
+        }
+        break;
       case 'okText':
         Button.setName(this.$ok, newValue);
         break;
@@ -91,7 +135,8 @@ export default class PopConfirm extends HTMLElement{
         box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, .4);
         
         transform: scale(0, 0);
-        
+        opacity: 0;
+
       }
       .message {
         margin: 10px;
