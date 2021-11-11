@@ -13,7 +13,9 @@ export default class PopConfirm extends HTMLElement{
     this.appendElement();
     this.setClass();
     this.click();
-    this.shadowRoot.append(this.initStyle(), this.$container);
+    this.$slot = document.createElement('slot');
+    this.$slot.setAttribute('name', 'popconfirm');
+    this.shadowRoot.append(this.initStyle(), this.$slot ,this.$container);
   }
 
   createElement() {
@@ -79,10 +81,7 @@ export default class PopConfirm extends HTMLElement{
     this.$style = document.createElement('style');
     this.$style.textContent = `
       .container {
-        position: aboslute;
-        top: 1rem;
-        right: 0;
-         
+        position: absolute;
         display: flex;
         flex-direction: column;
         position: absolute;
@@ -90,6 +89,8 @@ export default class PopConfirm extends HTMLElement{
         padding: 10px;
         min-width: 160px;
         box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, .4);
+        
+        transform: scale(0, 0);
         
       }
       .message {
