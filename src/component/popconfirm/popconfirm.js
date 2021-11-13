@@ -2,7 +2,7 @@ import Button from "../form/button.js";
 
 export default class PopConfirm extends HTMLElement{
   static get observedAttributes() {
-    return ['okText', 'cancelText', 'style', 'visible'];
+    return ['okText', 'cancelText', 'style', 'visible', 'okHandler'];
   }
 
   mousePosition = {
@@ -24,7 +24,7 @@ export default class PopConfirm extends HTMLElement{
 
     document.addEventListener('mousedown', this.getClickPosition.bind(this), true);
     this.open();
-    this.cancel();
+    this.close();
 
   }
 
@@ -68,18 +68,24 @@ export default class PopConfirm extends HTMLElement{
     })
   }
 
-  cancel() {
+  close() {
     this.$cancel.addEventListener('click', (e) => {
       this.setAttribute('visible', 'false');
     })
   }
+
+
   getClickPosition(e) {
     console.log(e);
     this.mousePosition.x = e.pageX;
     this.mousePosition.y = e.pageY;
   }
 
+  connectedCallback() {
+  }
+
   attributeChangedCallback(name, oldValue, newValue) {
+    console.log(name)
     switch(name) {
       case 'visible':
         if (newValue === 'true') {
@@ -105,6 +111,9 @@ export default class PopConfirm extends HTMLElement{
         break;
       case 'cancelText':
         Button.setName(this.$cancel, newValue);
+        break;
+      case 'okHandler':
+        console.log(123);
         break;
       case 'style':
         this.updateStyle`${newValue}`;

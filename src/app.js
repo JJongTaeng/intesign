@@ -88,7 +88,15 @@ Modal.onOk($modal, (e) => {
   Modal.close($modal);
 });
 
-console.dir($modal);
 Modal.onCancel($modal, (e) => {
   Modal.close($modal);
 })
+
+const $popconfirm = document.querySelector('.popconfirm');
+
+$popconfirm.setAttribute('okHandler', () => {
+  console.log(123);
+})
+
+$popconfirm.setAttribute('okText', 'OKKKK');
+$popconfirm.setAttribute('visible', 'true')
