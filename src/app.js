@@ -69,12 +69,7 @@ document.querySelector('.modal').addEventListener('click', (e) => {
 
 const $message = document.createElement('inte-message');
 Message.setMessage($message, '데이터를 받아오지 못했습니다.');
-Message.setType($message, 'error');
-$message.setAttribute('style', `
-  .container {
-    background: blue;
-  }
-`)
+
 document.body.append($message);
 
 document.querySelector('.message').addEventListener('click', (e) => {
