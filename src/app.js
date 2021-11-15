@@ -1,4 +1,4 @@
-import { Row, Card, Modal, Input, Message, Column } from './index.js';
+import { Row, Card, Modal, Input, Message, Column, PopConfirm } from './index.js';
 
 
 // Column.create(Card.create('Hello', 'Intae'), {xxl: 8, xl: 8, lg: 8, md: 8, sm: 8, xs: 24}),
@@ -89,8 +89,14 @@ Modal.onCancel($modal, (e) => {
 
 const $popconfirm = document.querySelector('.popconfirm');
 
+$popconfirm.setAttribute('message', '데이터를 삭제하겠습니까?')
 
-$popconfirm.setAttribute('okhandler', (e) => {
-  console.log(e);
+PopConfirm.okHandler($popconfirm, (e) => {
+  Message.setMessage($message, '데이터 삭제 중..');
+  Message.setType($message, 'info');
+  $message.setAttribute('visible', 'open');
+  setTimeout(() => {
+    $message.setAttribute('visible', 'close');
+  }, 3000)
 })
 

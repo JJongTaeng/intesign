@@ -2,7 +2,11 @@ import Button from "../form/button.js";
 
 export default class PopConfirm extends HTMLElement{
   static get observedAttributes() {
-    return ['oktext', 'canceltext', 'style', 'visible', 'okhandler'];
+    return ['oktext', 'canceltext', 'style', 'visible', 'okhandler', 'message'];
+  }
+
+  static okHandler($popconfirm, f) {
+    $popconfirm.$ok.addEventListener('click', f);
   }
 
   mousePosition = {
@@ -110,12 +114,8 @@ export default class PopConfirm extends HTMLElement{
       case 'canceltext':
         Button.setName(this.$cancel, newValue);
         break;
-      case 'okhandler':
-        let functionBody = `return ${newValue}`;
-        this.$ok.addEventListener('click', (e) => {
-          const f = new Function('e', functionBody)();
-          f(e);
-        })
+      case 'message':
+        this.$message.textContent = newValue;
         break;
       case 'style':
         this.updateStyle`${newValue}`;
