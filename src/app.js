@@ -95,8 +95,10 @@ PopConfirm.okHandler($popconfirm, (e) => {
   Message.setMessage($message, '데이터 삭제 중..');
   Message.setType($message, 'info');
   $message.setAttribute('visible', 'open');
+  $popconfirm.setAttribute('visible', 'close')
+
   setTimeout(() => {
     $message.setAttribute('visible', 'close');
   }, 3000)
 })
-
+튼

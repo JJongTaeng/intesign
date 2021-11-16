@@ -152,6 +152,46 @@ Modal.onOk($modal, (e) => {
       - open
       - close
 
+# Popconfirm
+```javascript
+<inte-popconfirm class="popconfirm">
+    <inte-button slot="popconfirm" name="데이터 삭제"></inte-button>
+</inte-popconfirm>
+```
+- 클릭 시 confirm 창을 띄울 버튼 이나 다른 element를 <inte-popconfirm>의 자식 element로 전달
+- 속성에 `slot="popconfirm"` 필수적으로 추가
+
+### method
+- okHandler
+  - ok 버튼을 누르면 어떤 동작을 할지 콜백함수로 전달
+  - 파라미터로 click event 객체 전달
+  ```javascript
+  PopConfirm.okHandler($popconfirm, (e) => {
+    Message.setMessage($message, '데이터 삭제 중..');
+    Message.setType($message, 'info');
+    $message.setAttribute('visible', 'open');
+    $popconfirm.setAttribute('visible', 'close')
+  
+    setTimeout(() => {
+      $message.setAttribute('visible', 'close');
+    }, 3000)
+  })
+  ```
+### attribute
+- message
+  ```javascript
+    $popconfirm.setAttribute('message', '데이터를 삭제하겠습니까?')
+  ```
+  - confirm 창에 나타날 메시지 설
+- visible
+  ```javascript
+    $message.setAttribute('visible', 'open');
+    $popconfirm.setAttribute('visible', 'close');
+  ```
+  - popconfirm 창이 열리고 닫히는 것을 설정
+- oktext, canceltext
+  - popconfirm 창의 버튼 2개의 텍스트를 설정한다.
+
 # Example
 더 많은 작업을 진행하면서 추가할 예정입니다.
 ```html
@@ -230,5 +270,6 @@ Modal.onCancel($modal, (e) => {
   Modal.close($modal);
 })
 ```
+
 
 예제 링크: https://intesign-example.herokuapp.com/
