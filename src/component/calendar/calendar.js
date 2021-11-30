@@ -35,6 +35,35 @@ class Calendar extends HTMLElement {
         height: 18rem;
         flex-shrink: 0;
       }
+      .title {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      .dayRow {
+        font-weight: bold;
+      }
+      .divider {
+        border-bottom: 1px solid #ddd;
+        margin: 10px 0 0;
+      }
+      .switch {
+        font-size: 2rem;
+        position: absolute;
+        top: -13px;
+        cursor: pointer;
+      }
+      
+      .switch:hover {
+        color: #5959ff;
+      }
+      .switch.switch-left {
+        left: 1rem;
+      }
+      .switch.switch-right {
+        right: 1rem;
+      }
+      
     `
 
     return this.$style;
