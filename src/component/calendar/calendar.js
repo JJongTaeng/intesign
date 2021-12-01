@@ -15,6 +15,10 @@ class Calendar extends HTMLElement {
 
   createElement() {
     this.$container = document.createElement('div');
+    this.$title = document.createElement('div');
+    this.$dayRow = document.createElement('div');
+    this.$divider = document.createElement('div');
+    this.$switch = document.createElement('div');
 
   }
 
@@ -70,3 +74,5 @@ class Calendar extends HTMLElement {
   }
 
 }
+
+customElements.define('inte-calendar', Calendar);
