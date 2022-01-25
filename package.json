@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "build": "rm -rf ./dist && tsc --build"
   },
   "repository": {
     "type": "git",
@@ -19,12 +20,16 @@
   ],
   "engines": {
     "node": ">=0.10.3 <17",
-    "npm" : "~7.21.0"
+    "npm": "~7.21.0"
   },
   "author": "JJongTaeng",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/JJongTaeng/intesign/issues"
   },
-  "homepage": "https://github.com/JJongTaeng/intesign#readme"
+  "homepage": "https://github.com/JJongTaeng/intesign#readme",
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.1",
+    "typescript": "^4.5.5"
+  }
 }
