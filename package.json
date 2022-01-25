@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
-    "build": "rm -rf ./dist && tsc --build"
+    "build": "rm -rf dist && npm run esm && npm run cjs",
+    "esm": "tsc -p tsconfig.esm.json",
+    "cjs": "tsc -p tsconfig.cjs.json"
   },
   "repository": {
     "type": "git",

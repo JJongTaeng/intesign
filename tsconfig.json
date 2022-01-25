@@ -1,17 +1,10 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Node 14",
-
   "compilerOptions": {
-    "lib": ["es2020"],
-    "module": "commonjs",
-    "target": "es2020",
-    "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
-    "declaration": true
-  }
+    "target": "ES5",
+    "module": "ES2015",
+    "lib": ["DOM", "ES2015"],
+    "declaration": true,
+    "rootDir": "src"
+  },
+  "include": ["src/"]
 }
