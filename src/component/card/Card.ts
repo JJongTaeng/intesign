@@ -43,7 +43,6 @@ export default class Card extends HTMLElement {
 
     this.shadowRoot?.append(this.initStyle(), this.$cardContainer);
 
-    customElements.define('inte-card', Card);
   }
 
   connectedCallback() {
@@ -97,32 +96,47 @@ export default class Card extends HTMLElement {
     return this.$style;
   }
 
-  // static createHeader() {
-  //   const node = document.createElement('div');
-  //   node.setAttribute('slot', 'card-header-slot');
-  //   return node;
-  // }
-  //
-  // static createBody() {
-  //   const node = document.createElement('div');
-  //   node.setAttribute('slot', 'card-body-slot');
-  //   return node;
-  // }
+  set body(element: HTMLElement | string) {
+    this.clearChildren(this.$slotBody);
 
-  // static create(head: HTMLElement, body: HTMLElement) {
-  //   const $card = document.createElement('inte-card');
-  //
-  //   const headerSlot = Card.createHeader();
-  //   const bodySlot = Card.createBody();
-  //
-  //   $card.append(headerSlot, bodySlot);
-  //
-  //   headerSlot.append(head);
-  //   bodySlot.append(body);
-  //
-  //   return $card;
-  // }
+    const node = document.createElement('div');
+    node.setAttribute('slot', 'card-body-slot');
+    node.append(element);
+    this.$slotBody.append(node);
+  }
 
+  setBody(element: HTMLElement | string) {
+    this.clearChildren(this.$slotBody);
+
+    const node = document.createElement('div');
+    node.setAttribute('slot', 'card-body-slot');
+    node.append(element);
+    this.$slotBody.append(node);
+    return this;
+  }
+
+  set header(element: HTMLElement | string) {
+    this.clearChildren(this.$slotHeader);
+
+    const node = document.createElement('div');
+    node.setAttribute('slot', 'card-header-slot');
+    node.append(element);
+    this.$slotHeader.append(node);
+  }
+
+  setHeader(element: HTMLElement | string) {
+    this.clearChildren(this.$slotHeader);
+
+    const node = document.createElement('div');
+    node.setAttribute('slot', 'card-header-slot');
+    node.append(element);
+    this.$slotHeader.append(node);
+    return this;
+  }
+
+  clearChildren(element: HTMLElement) {
+    element.replaceChildren();
+  }
 }
 
-
+customElements.define('inte-card', Card);
