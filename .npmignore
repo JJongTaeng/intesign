@@ -1,5 +1,5 @@
 .idea
-src/app.js
+src/app.ts
 src/index.html
 node_modules
 dist

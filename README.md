@@ -206,7 +206,7 @@ Modal.onOk($modal, (e) => {
     <body>
     <inte-button name="modal" class="modal"></inte-button>
     <inte-button name="message" class="message"></inte-button>
-    <script type="module" src="app.js"></script>
+    <script type="module" src="app.ts"></script>
     <inte-modal visible="true" title="hello"></inte-modal>
     </body>
 </html>

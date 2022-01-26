@@ -15,9 +15,6 @@ export default class Card extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.createElement();
-
-    this.shadowRoot
 
     this.$style = document.createElement('style');
     this.$cardContainer = document.createElement('div');
@@ -27,6 +24,26 @@ export default class Card extends HTMLElement {
     this.$cardBodyContent = document.createElement('span');
     this.$slotHeader = document.createElement('slot');
     this.$slotBody = document.createElement('slot');
+
+    this.$cardHeaderContent.appendChild(this.$slotHeader);
+    this.$cardBodyContent.appendChild(this.$slotBody);
+    this.$cardContainer.append(this.$cardHeader, this.$cardBody);
+    this.$cardHeader.appendChild(this.$cardHeaderContent);
+    this.$cardBody.appendChild(this.$cardBodyContent);
+
+
+    this.$cardContainer.setAttribute('class', 'card-container');
+    this.$cardHeader.setAttribute('class', 'card-header');
+    this.$cardBody.setAttribute('class', 'card-body');
+    this.$cardHeaderContent.setAttribute('class', 'card-header-content');
+    this.$cardBodyContent.setAttribute('class', 'card-body-content');
+    this.$slotHeader.setAttribute('name', 'card-header-slot');
+    this.$slotBody.setAttribute('name', 'card-body-slot');
+
+
+    this.shadowRoot?.append(this.initStyle(), this.$cardContainer);
+
+    customElements.define('inte-card', Card);
   }
 
   connectedCallback() {
@@ -80,52 +97,32 @@ export default class Card extends HTMLElement {
     return this.$style;
   }
 
-  createElement() {
+  // static createHeader() {
+  //   const node = document.createElement('div');
+  //   node.setAttribute('slot', 'card-header-slot');
+  //   return node;
+  // }
+  //
+  // static createBody() {
+  //   const node = document.createElement('div');
+  //   node.setAttribute('slot', 'card-body-slot');
+  //   return node;
+  // }
 
-    this.$cardContainer.setAttribute('class', 'card-container');
-    this.$cardHeader.setAttribute('class', 'card-header');
-    this.$cardBody.setAttribute('class', 'card-body');
-    this.$cardHeaderContent.setAttribute('class', 'card-header-content');
-    this.$cardBodyContent.setAttribute('class', 'card-body-content');
-    this.$slotHeader.setAttribute('name', 'card-header-slot');
-    this.$slotBody.setAttribute('name', 'card-body-slot');
-
-    this.$cardHeaderContent.appendChild(this.$slotHeader);
-    this.$cardBodyContent.appendChild(this.$slotBody);
-    this.$cardContainer.append(this.$cardHeader, this.$cardBody);
-    this.$cardHeader.appendChild(this.$cardHeaderContent);
-    this.$cardBody.appendChild(this.$cardBodyContent);
-
-    this.shadowRoot?.append(this.initStyle(), this.$cardContainer);
-  }
-
-  static createHeader() {
-    const node = document.createElement('div');
-    node.setAttribute('slot', 'card-header-slot');
-    return node;
-  }
-
-  static createBody() {
-    const node = document.createElement('div');
-    node.setAttribute('slot', 'card-body-slot');
-    return node;
-  }
-
-  static create(head: HTMLElement, body: HTMLElement) {
-    const $card = document.createElement('inte-card');
-
-    const headerSlot = Card.createHeader();
-    const bodySlot = Card.createBody();
-
-    $card.append(headerSlot, bodySlot);
-
-    headerSlot.append(head);
-    bodySlot.append(body);
-
-    return $card;
-  }
+  // static create(head: HTMLElement, body: HTMLElement) {
+  //   const $card = document.createElement('inte-card');
+  //
+  //   const headerSlot = Card.createHeader();
+  //   const bodySlot = Card.createBody();
+  //
+  //   $card.append(headerSlot, bodySlot);
+  //
+  //   headerSlot.append(head);
+  //   bodySlot.append(body);
+  //
+  //   return $card;
+  // }
 
 }
 
-customElements.define('inte-card', Card);
 

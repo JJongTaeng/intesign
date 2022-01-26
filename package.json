@@ -8,7 +8,8 @@
     "webpack": "webpack",
     "build": "rm -rf dist && npm run esm && npm run cjs",
     "esm": "tsc -p tsconfig.esm.json",
-    "cjs": "tsc -p tsconfig.cjs.json"
+    "cjs": "tsc -p tsconfig.cjs.json",
+    "start": "webpack serve --mode development"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,10 @@
   "homepage": "https://github.com/JJongTaeng/intesign#readme",
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
-    "typescript": "^4.5.5"
+    "html-webpack-plugin": "^5.5.0",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.5",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.3"
   }
 }
