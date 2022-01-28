@@ -4,7 +4,7 @@
   "description": "Intesign is Vanilla JavaScript Design Library",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "webpack": "webpack",
     "build": "rm -rf dist && npm run esm && npm run cjs",
     "esm": "tsc -p tsconfig.esm.json",
@@ -33,7 +33,9 @@
   "homepage": "https://github.com/JJongTaeng/intesign#readme",
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
+    "@types/jest": "^27.4.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.4.7",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.5",
     "webpack-cli": "^4.9.2",
