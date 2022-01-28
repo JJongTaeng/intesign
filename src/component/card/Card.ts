@@ -96,41 +96,38 @@ export default class Card extends HTMLElement {
     return this.$style;
   }
 
-  set body(element: HTMLElement | string) {
-    this.clearChildren(this.$slotBody);
+  createSlot(slot: HTMLSlotElement, slotAttribute: string) {
+    this.clearChildren(slot);
 
-    const node = document.createElement('div');
-    node.setAttribute('slot', 'card-body-slot');
-    node.append(element);
-    this.$slotBody.append(node);
+    const $div = document.createElement('div');
+    $div.setAttribute('slot', slotAttribute);
+
+    return $div;
   }
 
-  setBody(element: HTMLElement | string) {
-    this.clearChildren(this.$slotBody);
+  set body(content: HTMLElement | string) {
+    const $divSlot = this.createSlot(this.$slotBody, 'card-body-slot');
+    $divSlot.append(content); // div[slot] element에 내용 붙임
+    this.$slotBody.append($divSlot);
+  }
 
-    const node = document.createElement('div');
-    node.setAttribute('slot', 'card-body-slot');
-    node.append(element);
-    this.$slotBody.append(node);
+  setBody(content: HTMLElement | string) {
+    const $divSlot = this.createSlot(this.$slotBody, 'card-body-slot');
+    $divSlot.append(content);
+    this.$slotBody.append($divSlot);
     return this;
   }
 
-  set header(element: HTMLElement | string) {
-    this.clearChildren(this.$slotHeader);
-
-    const node = document.createElement('div');
-    node.setAttribute('slot', 'card-header-slot');
-    node.append(element);
-    this.$slotHeader.append(node);
+  set header(content: HTMLElement | string) {
+    const $divSlot = this.createSlot(this.$slotHeader, 'card-header-slot');
+    $divSlot.append(content);
+    this.$slotHeader.append($divSlot);
   }
 
-  setHeader(element: HTMLElement | string) {
-    this.clearChildren(this.$slotHeader);
-
-    const node = document.createElement('div');
-    node.setAttribute('slot', 'card-header-slot');
-    node.append(element);
-    this.$slotHeader.append(node);
+  setHeader(content: HTMLElement | string) {
+    const $divSlot = this.createSlot(this.$slotHeader, 'card-header-slot');
+    $divSlot.append(content);
+    this.$slotHeader.append($divSlot);
     return this;
   }
 
