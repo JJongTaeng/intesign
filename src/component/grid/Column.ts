@@ -1,7 +1,6 @@
 import IElement from "../../utils/IElement";
 
 interface ColumnInterface {
-  get observedAttributes(): ColumnAttributeType[];
   attributeChangedCallback(name: string, oldValue: string, newValue: string): void;
   connectedCallback(): void;
   updateStyleBySpan(span: SpanType): void;
@@ -19,7 +18,7 @@ interface SpanType {
 }
 
 export default class Column extends HTMLElement implements ColumnInterface {
-  get observedAttributes(): ColumnAttributeType[] {
+  static get observedAttributes(): ColumnAttributeType[] {
     return ['xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'style']
   }
 
@@ -40,18 +39,19 @@ export default class Column extends HTMLElement implements ColumnInterface {
     super();
     this.attachShadow({ mode: 'open' });
 
+    this.$slot = new IElement<HTMLSlotElement>('slot')
+      .setAttribute('name', 'column-slot')
+      .getElement();
+
     this.$container = new IElement<HTMLDivElement>('div')
       .setAttribute('class', 'container')
       .appendChild(this.$slot)
       .getElement();
 
-    this.$slot = new IElement<HTMLSlotElement>('slot')
-      .setAttribute('name', 'column-slot')
-      .getElement();
-
     this.$style = document.createElement('style');
 
     this.shadowRoot.append(this.$style, this.$container);
+
   }
 
   connectedCallback() {
@@ -163,13 +163,12 @@ export default class Column extends HTMLElement implements ColumnInterface {
 
   setContent(content: HTMLElement | string) {
     this.$slot.replaceChildren();
-
-    const $slotChild = new IElement<HTMLDivElement>('div')
+    new IElement<HTMLDivElement>('div')
       .setAttribute('slot', 'column-slot')
       .append(content)
+      .setParent(this.$slot)
       .getElement();
 
-    this.$slot.append($slotChild);
     return this;
   }
 }

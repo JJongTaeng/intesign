@@ -103,11 +103,13 @@ export default class Card extends HTMLElement {
 
   setBody(content: HTMLElement | string) {
     this.$slotBody.replaceChildren();
-    const $slotChild = new IElement<HTMLSlotElement>('slot')
+
+    new IElement<HTMLSlotElement>('div')
       .setAttribute('slot', 'card-body-slot')
       .append(content)
+      .setParent(this.$slotBody)
       .getElement();
-    this.$slotBody.append($slotChild);
+
     return this;
   }
 
@@ -117,11 +119,13 @@ export default class Card extends HTMLElement {
 
   setHeader(content: HTMLElement | string) {
     this.$slotHeader.replaceChildren();
-    const $slotChild = new IElement<HTMLSlotElement>('slot')
+
+    new IElement<HTMLSlotElement>('div')
       .setAttribute('slot', 'card-header-slot')
       .append(content)
+      .setParent(this.$slotHeader)
       .getElement();
-    this.$slotHeader.append($slotChild);
+
     return this;
   }
 }

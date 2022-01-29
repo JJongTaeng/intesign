@@ -1,10 +1,7 @@
 import Card from './component/card/Card';
+import Row from "./component/grid/Row";
+import Column from "./component/grid/Column";
 
-const card = new Card();
-
-card
-  .setBody('create in JS file')
-  .setHeader('this is header');
-
-document.body.append(card);
-
+const card = new Card()
+const row = new Row();
+const c1 = new Column();

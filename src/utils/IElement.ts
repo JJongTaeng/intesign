@@ -35,4 +35,14 @@ export default class IElement<T extends HTMLElement> implements IEInterface {
     this.$element.replaceChildren();
     return this;
   }
+
+  setParent(node: HTMLElement) {
+    node.appendChild(this.$element);
+    return this;
+  }
+
+  setTextContent(text: string) {
+    this.$element.textContent = text;
+    return this;
+  }
 };
