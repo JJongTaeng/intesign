@@ -7,7 +7,6 @@ export default class Row extends HTMLElement {
     const $row = document.createElement('inte-row');
     const $slotDiv = Row.createRowSlot();
 
-
     $slotDiv.setAttribute('class', 'column-container');
     $slotDiv.style.display = 'flex';
     $slotDiv.style.width = '100%';
@@ -29,7 +28,6 @@ export default class Row extends HTMLElement {
   static create(...rest) {
     const $row = document.createElement('inte-row');
     const $slotDiv = Row.createRowSlot();
-
 
     $slotDiv.setAttribute('class', 'column-container');
     $slotDiv.style.display = 'flex';
@@ -54,7 +52,7 @@ export default class Row extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    switch (name) {
+    switch(name) {
       case 'style':
         this.updateStyle(newValue);
         break;

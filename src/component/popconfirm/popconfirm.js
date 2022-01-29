@@ -78,7 +78,6 @@ export default class PopConfirm extends HTMLElement {
     })
   }
 
-
   getClickPosition(e) {
 
     this.mousePosition.x = e.pageX;
@@ -89,9 +88,9 @@ export default class PopConfirm extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    switch (name) {
+    switch(name) {
       case 'visible':
-        if (newValue === 'true') {
+        if(newValue === 'true') {
           this.updateStyle`
             .container {
               left: ${this.mousePosition.x}px;
@@ -126,7 +125,7 @@ export default class PopConfirm extends HTMLElement {
 
   updateStyle(style, ...arg) {
     const raw = style.raw.reduce((prev, current, index) => {
-      if (arg.length > 0) {
+      if(arg.length > 0) {
         return prev + arg[index - 1] + current
       } else {
         return prev + current;
@@ -171,7 +170,6 @@ export default class PopConfirm extends HTMLElement {
 
     return this.$style;
   }
-
 
 }
 

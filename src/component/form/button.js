@@ -25,15 +25,15 @@ export default class Button extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    switch (name) {
+    switch(name) {
       case 'name':
         this.$button.textContent = newValue;
         break;
       case 'size':
-        if (newValue === 'large') {
+        if(newValue === 'large') {
           this.$button.classList.remove('large');
           this.$button.classList.add('large');
-        } else if (newValue === 'small') {
+        } else if(newValue === 'small') {
           this.$button.classList.remove('large');
           this.$button.classList.add('small');
         } else {

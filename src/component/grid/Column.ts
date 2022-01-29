@@ -68,8 +68,8 @@ export default class Column extends HTMLElement implements ColumnInterface {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (oldValue !== newValue) {
-      switch (name) {
+    if(oldValue !== newValue) {
+      switch(name) {
         case 'xxl':
           this.span = {
             ...this.span,

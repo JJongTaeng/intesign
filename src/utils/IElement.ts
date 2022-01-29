@@ -5,7 +5,7 @@ interface IEInterface {
   appendChild(node: Node): this;
 }
 
-export default class IElement<T extends HTMLElement> implements IEInterface{
+export default class IElement<T extends HTMLElement> implements IEInterface {
   private readonly $element: T;
 
   constructor(tag: keyof HTMLElementTagNameMap) {

@@ -87,9 +87,9 @@ export default class Modal extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    switch (name) {
+    switch(name) {
       case 'visible':
-        if (newValue === 'true') {
+        if(newValue === 'true') {
           this.updateStyle`
             .container {
               transform-origin: ${this.mousePosition.x}px ${this.mousePosition.y}px;
@@ -122,7 +122,7 @@ export default class Modal extends HTMLElement {
     this.$container.addEventListener('click', (e) => {
       let element = e.target;
 
-      if (element.classList.contains('container')) {
+      if(element.classList.contains('container')) {
         Modal.close(this);
       }
     })
@@ -134,7 +134,7 @@ export default class Modal extends HTMLElement {
 
   updateStyle(style, ...arg) {
     const raw = style.raw.reduce((prev, current, index) => {
-      if (arg.length > 0) {
+      if(arg.length > 0) {
         return prev + arg[index - 1] + current
       } else {
         return prev + current;

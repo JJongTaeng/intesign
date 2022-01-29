@@ -57,7 +57,7 @@ export default class Card extends HTMLElement {
   }
 
   attributeChangedCallback(name: string, oldValue: string, newValue: string): void {
-    switch (name) {
+    switch(name) {
       case 'style':
         this.updateStyle(newValue);
         break;

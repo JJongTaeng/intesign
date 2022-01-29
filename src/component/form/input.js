@@ -4,7 +4,7 @@ export default class Input extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    switch (name) {
+    switch(name) {
       case 'type':
         this.input.setAttribute('type', current);
         break;

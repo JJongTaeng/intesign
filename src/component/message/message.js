@@ -34,19 +34,19 @@ export default class Message extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    switch (name) {
+    switch(name) {
       case 'message':
         this.$content.textContent = newValue;
         break;
       case 'type':
-        if (newValue === 'info') {
+        if(newValue === 'info') {
           this.$content.style.color = 'dodgerblue';
-        } else if (newValue === 'error') {
+        } else if(newValue === 'error') {
           this.$content.style.color = 'crimson';
         }
         break;
       case 'visible':
-        if (newValue === 'open') {
+        if(newValue === 'open') {
           this.$container.style.transform = 'scale(1, 1)';
         } else {
           this.$container.style.transform = 'scale(1, 0)';

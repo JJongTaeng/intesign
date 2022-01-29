@@ -241,7 +241,6 @@ Modal.onOk($modal, (e) => {
 ```javascript
 import { Card, Column, Message, Modal, Row } from './index.js';
 
-
 // Column.create(Card.create('Hello', 'Intae'), {xxl: 8, xl: 8, lg: 8, md: 8, sm: 8, xs: 24}),
 const $modal = Modal.create();
 
@@ -260,7 +259,6 @@ document.body.append(
   ),
   $modal,
 );
-
 
 Modal.appendBody($modal, Row.create(
   Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
