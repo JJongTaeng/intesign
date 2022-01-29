@@ -1,12 +1,23 @@
 import '@testing-library/jest-dom'
 import Card from './Card';
-function sum(a, b) {
-  return a + b;
-}
+import { getByText } from "@testing-library/dom";
 
-test('adds 1 + 2 to equal 3', () => {
-  let card = new Card();
-  card.setBody('Hello');
+describe('Card 컴포넌트', () => {
+  test('Body 내용(텍스트) 설정', () => {
+    let $card = new Card();
 
-  expect(sum(1, 2)).toBe(3);
-});
+    $card.setBody('Hello');
+
+    let $body = getByText($card.body, 'Hello');
+    expect($body).toHaveTextContent('Hello');
+  });
+
+  test('Header 내용(텍스트) 설정', () => {
+      let $card = new Card();
+
+      $card.setHeader('Hello');
+
+      let $header = getByText($card.header, 'Hello');
+      expect($header).toHaveTextContent('Hello');
+  });
+})

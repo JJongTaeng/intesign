@@ -3,7 +3,8 @@
     "target": "ES6",
     "lib": ["DOM", "ES2020"],
     "declaration": true,
-    "rootDir": "src"
+    "rootDir": "src",
+    "moduleResolution": "node" // 모듈 import 시 에러 제거
   },
   "include": ["src/"]
 }

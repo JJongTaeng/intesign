@@ -105,6 +105,10 @@ export default class Card extends HTMLElement {
     return $div;
   }
 
+  get body(): HTMLElement {
+    return this.$slotBody;
+  }
+
   set body(content: HTMLElement | string) {
     const $divSlot = this.createSlot(this.$slotBody, 'card-body-slot');
     $divSlot.append(content); // div[slot] element에 내용 붙임
@@ -116,6 +120,10 @@ export default class Card extends HTMLElement {
     $divSlot.append(content);
     this.$slotBody.append($divSlot);
     return this;
+  }
+
+  get header(): HTMLElement {
+    return this.$slotHeader;
   }
 
   set header(content: HTMLElement | string) {
