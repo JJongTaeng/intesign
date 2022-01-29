@@ -24,10 +24,7 @@ export default class Row extends HTMLElement {
       .setParent(document.head)
       .getElement();
 
-    this.$style = new IElement<HTMLStyleElement>('style')
-      .setTextContent(`
-      `)
-      .getElement();
+    this.$style = new IElement<HTMLStyleElement>('style').getElement();
 
     this.$slot = new IElement<HTMLSlotElement>('slot')
       .setAttribute('name', 'row-slot')
