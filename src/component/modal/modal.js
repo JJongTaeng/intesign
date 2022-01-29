@@ -1,4 +1,4 @@
-import Button from "../form/button.js";
+import Button from "../form/Button.ts";
 
 export default class Modal extends HTMLElement {
   static get observedAttributes() {
