@@ -3,14 +3,14 @@ export default class Card extends HTMLElement {
     return ['style'];
   }
 
-  $cardContainer:  HTMLDivElement;
-  $cardHeader: HTMLDivElement;
-  $cardBody: HTMLDivElement;
-  $cardHeaderContent: HTMLSpanElement;
-  $cardBodyContent: HTMLSpanElement;
-  $slotHeader: HTMLSlotElement;
-  $slotBody: HTMLSlotElement;
-  $style: HTMLStyleElement;
+  private readonly $cardContainer:  HTMLDivElement;
+  private readonly $cardHeader: HTMLDivElement;
+  private readonly $cardBody: HTMLDivElement;
+  private readonly $cardHeaderContent: HTMLSpanElement;
+  private readonly $cardBodyContent: HTMLSpanElement;
+  private readonly $slotHeader: HTMLSlotElement;
+  private readonly $slotBody: HTMLSlotElement;
+  private readonly $style: HTMLStyleElement;
 
   constructor() {
     super();
