@@ -1,35 +1,46 @@
 # intesign
- Vanilla JavaScript 디자인 오픈소스 라이브러리
+
+Vanilla JavaScript 디자인 오픈소스 라이브러리
 
 # Download
+
 `npm install --save intesign`
 
 # Use direct reference
+
 `import { Row, Column, Message, Input, Modal, Card } from './node_modules/intesign/src/index.js';`
 
 # Bundling environment
+
 import { Row, Column, Message, Input, Modal, Card } from 'intesign';
 
 # Grid
+
 ### Row
+
 - `static create(...columns)`
+
 ```javascript
 Row.create(
-    Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
-    Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
+  Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
+  Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
+  Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
+  Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
+  Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
+  Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
 )
 ```
+
 ### Column
+
 - `static create(node, { xxl, xl, lg, md, sm, xs })`
+
 ```javascript
 Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 })
 ```
-- 총 24 사이즈 
-  - ex) `xxl: 4` 는 `1600px`에서 1/6 사이즈
+
+- 총 24 사이즈
+    - ex) `xxl: 4` 는 `1600px`에서 1/6 사이즈
 - `xxl: > 1600px`
 - `xl: > 1200px`
 - `lg: > 992px`
@@ -38,7 +49,9 @@ Column.create(component, { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 })
 - `xs: < 576px`
 
 # Card
+
 - `static create(head, body)`
+
 ```javascript
 Card.create('Title', `
   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -48,70 +61,73 @@ Card.create('Title', `
 ```
 
 # Modal
+
 ### method
+
 - `create`
-  - Modal Element를 생성해서 반환합니다.
-  - no parameters 
-  - `Modal.create()`: return `<inte-modal></inte-modal>` element
+    - Modal Element를 생성해서 반환합니다.
+    - no parameters
+    - `Modal.create()`: return `<inte-modal></inte-modal>` element
 - `appendBody`
-  - Modal의 Body를 설정합니다.
-  - `Modal.appendBody($modal, component);`
-  - parameter
-    - $modal: Body를 설정할 Modal Element
-    - component: Body에 넣을 component
-    - return: `null`
+    - Modal의 Body를 설정합니다.
+    - `Modal.appendBody($modal, component);`
+    - parameter
+        - $modal: Body를 설정할 Modal Element
+        - component: Body에 넣을 component
+        - return: `null`
 - `appendTitle`
-  - Modal의 Title을 설정합니다.
-  - `Modal.appendTitle($modal, title);`
-  - parameter
-    - $modal: Title을 설정할 Modal Element
-    - title: Modal의 Title
+    - Modal의 Title을 설정합니다.
+    - `Modal.appendTitle($modal, title);`
+    - parameter
+        - $modal: Title을 설정할 Modal Element
+        - title: Modal의 Title
 - `open`
-  - Modal을 view에 보이도록 설정합니다.
-  - `Modal.open($modal)`
-  - parameter
-    - $modal: 보이도록 설정할 Modal Element
+    - Modal을 view에 보이도록 설정합니다.
+    - `Modal.open($modal)`
+    - parameter
+        - $modal: 보이도록 설정할 Modal Element
 - `close`
-  - Modal을 view에 안보이도록 설정합니다.
-  - `Modal.close($modal)`
-  - parameter
-    - $modal: 안보이게 설정할 Modal Element
+    - Modal을 view에 안보이도록 설정합니다.
+    - `Modal.close($modal)`
+    - parameter
+        - $modal: 안보이게 설정할 Modal Element
 - `setWidth`
-  - Modal의 너비를 설정합니다. 
-  - 단위: `vw`
-  - `Modal.setWidth($modal, width)`
-  - parameter
-    - $modal: 너비를 설정할 Modal Element
-    - width: 0 ~ 100 number / default: 50
+    - Modal의 너비를 설정합니다.
+    - 단위: `vw`
+    - `Modal.setWidth($modal, width)`
+    - parameter
+        - $modal: 너비를 설정할 Modal Element
+        - width: 0 ~ 100 number / default: 50
 - `setHeight` (not recommended)
-  - Modal의 높이를 설정합니다.
-  - 단위: `vh`
-  - `Modal.setHeight($modal, height)`
-  - parameter
-    - $modal: 높이를 설정할 Modal Element
-    - width: 0 ~ 100 number / default: content height
+    - Modal의 높이를 설정합니다.
+    - 단위: `vh`
+    - `Modal.setHeight($modal, height)`
+    - parameter
+        - $modal: 높이를 설정할 Modal Element
+        - width: 0 ~ 100 number / default: content height
 - `onOk`
-  - Modal 하단의 OK 버튼 이벤트
-  - `Modal.onOk($modal, callback)`
-  - parameter
-    - $modal: OK 버튼 이벤트를 설정할 Modal Element
-    - callback: OK 버튼 클릭 시 발생할 이벤트 콜백 함수
+    - Modal 하단의 OK 버튼 이벤트
+    - `Modal.onOk($modal, callback)`
+    - parameter
+        - $modal: OK 버튼 이벤트를 설정할 Modal Element
+        - callback: OK 버튼 클릭 시 발생할 이벤트 콜백 함수
 - `onCancel`
-  - Modal 하단의 CANCEL 버튼 이벤트
-  - `Modal.onCancel($modal, callback)`
-  - parameter
-    - $modal: CANCEL 버튼 이벤트를 설정할 Modal Element
-    - callback: CANCEL 버튼 클릭 시 발생할 이벤트 콜백 함수
+    - Modal 하단의 CANCEL 버튼 이벤트
+    - `Modal.onCancel($modal, callback)`
+    - parameter
+        - $modal: CANCEL 버튼 이벤트를 설정할 Modal Element
+        - callback: CANCEL 버튼 클릭 시 발생할 이벤트 콜백 함수
+
 ```javascript
 const $modal = Modal.create();
 
 Modal.appendBody($modal, Row.create(
-        Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
-        Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
-        Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
-        Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
-        Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
-        Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
+  Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
+  Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
+  Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
+  Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
+  Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
+  Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
 ))
 
 document.querySelector('.modal').addEventListener('click', (e) => {
@@ -124,47 +140,52 @@ Modal.onOk($modal, (e) => {
 ```
 
 # Message
+
 ### method
+
 - create
-  - Message Element를 생성해서 반환합니다.
-  - no parameters
-  - `Message.create()`: return `<inte-message></inte-message>` element
+    - Message Element를 생성해서 반환합니다.
+    - no parameters
+    - `Message.create()`: return `<inte-message></inte-message>` element
 - setMessage
-  - Message Element의 보여질 메시지(message)를 설정합니다.
-  - `Message.setMessage($message, message)`
-  - parameter
-    - $message: message를 설정할 Message Element
-    - message: Message Element에 설정할 message
+    - Message Element의 보여질 메시지(message)를 설정합니다.
+    - `Message.setMessage($message, message)`
+    - parameter
+        - $message: message를 설정할 Message Element
+        - message: Message Element에 설정할 message
 - setType
-  - Message Element의 보여질 메시지(message) 타입을 설정합니다.
-  - `Message.setType($message, type)`
-  - parameter
-    - $message: type을 설정할 Message Element
-    - type: Message Element에 설정할 type 
-      - info: 파란색 글씨의 정보메시지
-      - error: 붉은색 글씨의 에러메시지
+    - Message Element의 보여질 메시지(message) 타입을 설정합니다.
+    - `Message.setType($message, type)`
+    - parameter
+        - $message: type을 설정할 Message Element
+        - type: Message Element에 설정할 type
+            - info: 파란색 글씨의 정보메시지
+            - error: 붉은색 글씨의 에러메시지
 - setVisible
-  - Message Element가 보일지 안보일지 설정.
-  - `Message.setVisible($message, visible)`
-  - parameter
-    - $message: visble을 설정할 Message Element
-    - visible: Message Element에 설정할 visible
-      - open
-      - close
+    - Message Element가 보일지 안보일지 설정.
+    - `Message.setVisible($message, visible)`
+    - parameter
+        - $message: visble을 설정할 Message Element
+        - visible: Message Element에 설정할 visible
+            - open
+            - close
 
 # Popconfirm
+
 ```javascript
 <inte-popconfirm class="popconfirm">
     <inte-button slot="popconfirm" name="데이터 삭제"></inte-button>
 </inte-popconfirm>
 ```
+
 - 클릭 시 confirm 창을 띄울 버튼 이나 다른 element를 <inte-popconfirm>의 자식 element로 전달
 - 속성에 `slot="popconfirm"` 필수적으로 추가
 
 ### method
+
 - okHandler
-  - ok 버튼을 누르면 어떤 동작을 할지 콜백함수로 전달
-  - 파라미터로 click event 객체 전달
+    - ok 버튼을 누르면 어떤 동작을 할지 콜백함수로 전달
+    - 파라미터로 click event 객체 전달
   ```javascript
   PopConfirm.okHandler($popconfirm, (e) => {
     Message.setMessage($message, '데이터 삭제 중..');
@@ -177,23 +198,27 @@ Modal.onOk($modal, (e) => {
     }, 3000)
   })
   ```
+
 ### attribute
+
 - message
   ```javascript
     $popconfirm.setAttribute('message', '데이터를 삭제하겠습니까?')
   ```
-  - confirm 창에 나타날 메시지 설
+    - confirm 창에 나타날 메시지 설
 - visible
   ```javascript
     $message.setAttribute('visible', 'open');
     $popconfirm.setAttribute('visible', 'close');
   ```
-  - popconfirm 창이 열리고 닫히는 것을 설정
+    - popconfirm 창이 열리고 닫히는 것을 설정
 - oktext, canceltext
-  - popconfirm 창의 버튼 2개의 텍스트를 설정한다.
+    - popconfirm 창의 버튼 2개의 텍스트를 설정한다.
 
 # Example
+
 더 많은 작업을 진행하면서 추가할 예정입니다.
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -270,6 +295,5 @@ Modal.onCancel($modal, (e) => {
   Modal.close($modal);
 })
 ```
-
 
 예제 링크: https://intesign-example.herokuapp.com/

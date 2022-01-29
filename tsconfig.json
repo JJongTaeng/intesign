@@ -1,10 +1,16 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "lib": ["DOM", "ES2020"],
+    "lib": [
+      "DOM",
+      "ES2020"
+    ],
     "declaration": true,
     "rootDir": "src",
-    "moduleResolution": "node" // 모듈 import 시 에러 제거
+    "moduleResolution": "node"
+    // 모듈 import 시 에러 제거
   },
-  "include": ["src/"]
+  "include": [
+    "src/"
+  ]
 }

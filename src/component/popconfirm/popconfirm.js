@@ -1,6 +1,6 @@
 import Button from "../form/button.js";
 
-export default class PopConfirm extends HTMLElement{
+export default class PopConfirm extends HTMLElement {
   static get observedAttributes() {
     return ['oktext', 'canceltext', 'style', 'visible', 'okhandler', 'message'];
   }
@@ -12,11 +12,12 @@ export default class PopConfirm extends HTMLElement{
   mousePosition = {
     x: 0,
     y: 0,
-  };x
+  };
+  x
 
   constructor() {
     super();
-    this.attachShadow({ mode: 'open'});
+    this.attachShadow({ mode: 'open' });
 
     this.createElement();
     this.appendElement();
@@ -24,7 +25,7 @@ export default class PopConfirm extends HTMLElement{
     this.click();
     this.$slot = document.createElement('slot');
     this.$slot.setAttribute('name', 'popconfirm');
-    this.shadowRoot.append(this.initStyle(), this.$slot ,this.$container);
+    this.shadowRoot.append(this.initStyle(), this.$slot, this.$container);
 
     document.addEventListener('mousedown', this.getClickPosition.bind(this), true);
     this.open();
@@ -88,7 +89,7 @@ export default class PopConfirm extends HTMLElement{
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    switch(name) {
+    switch (name) {
       case 'visible':
         if (newValue === 'true') {
           this.updateStyle`
@@ -125,8 +126,8 @@ export default class PopConfirm extends HTMLElement{
 
   updateStyle(style, ...arg) {
     const raw = style.raw.reduce((prev, current, index) => {
-      if(arg.length > 0) {
-        return prev + arg[index-1] + current
+      if (arg.length > 0) {
+        return prev + arg[index - 1] + current
       } else {
         return prev + current;
       }

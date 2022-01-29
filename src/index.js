@@ -1,5 +1,5 @@
 import Card from "../dist/esm/component/card/Card.js";
-import Column from "./component/grid/column.js";
+import Column from "./component/grid/Column.ts";
 import Row from "./component/grid/row.js";
 import Modal from './component/modal/modal.js';
 import Message from './component/message/message.js';

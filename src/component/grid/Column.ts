@@ -1,17 +1,58 @@
-export default class Column extends HTMLElement {
-  get observedAttributes() {
+import IElement from "../../utils/IElement";
+
+interface ColumnInterface {
+  get observedAttributes(): ColumnAttributeType[];
+  attributeChangedCallback(name: string, oldValue: string, newValue: string): void;
+  connectedCallback(): void;
+  updateStyleBySpan(span: SpanType): void;
+}
+
+type ColumnAttributeType = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'style'
+
+interface SpanType {
+  xxl: string;
+  xl: string;
+  lg: string;
+  md: string;
+  sm: string;
+  xs: string;
+}
+
+export default class Column extends HTMLElement implements ColumnInterface {
+  get observedAttributes(): ColumnAttributeType[] {
     return ['xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'style']
   }
 
-  $container
-  span = {}
+  private readonly $container: HTMLDivElement;
+  private readonly $slot: HTMLSlotElement;
+  private readonly $style: HTMLStyleElement;
+
+  span: SpanType = {
+    xxl: '',
+    xl: '',
+    lg: '',
+    md: '',
+    sm: '',
+    xs: '',
+  }
 
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.createElement();
-  }
 
+    this.$container = new IElement<HTMLDivElement>('div')
+      .setAttribute('class', 'container')
+      .appendChild(this.$slot)
+      .getElement();
+
+    this.$slot = new IElement<HTMLSlotElement>('slot')
+      .setAttribute('name', 'column-slot')
+      .getElement();
+
+    this.$style = document.createElement('style');
+
+    this.shadowRoot.append(this.$style, this.$container);
+  }
 
   connectedCallback() {
     this.span.xxl = this.getAttribute('xxl')
@@ -21,7 +62,7 @@ export default class Column extends HTMLElement {
     this.span.sm = this.getAttribute('sm')
     this.span.xs = this.getAttribute('xs')
 
-    this.updateSpan({
+    this.updateStyleBySpan({
       ...this.span,
     })
   }
@@ -65,44 +106,14 @@ export default class Column extends HTMLElement {
             xs: newValue,
           }
           break;
-        case 'style':
-          this.updateStyle(newValue);
-          break;
       }
 
-      this.updateSpan({ ...this.span });
+      this.updateStyleBySpan({ ...this.span });
     }
   }
 
-  updateStyle(style) {
-    this.$style.textContent = this.$style.textContent + style;
-  }
-
-  initStyle() {
-    const styleElement = document.createElement('style');
-    styleElement.textContent = `
-    `;
-
-    return styleElement;
-  }
-
-  createElement() {
-
-    this.$container = document.createElement('div');
-    this.$slot = document.createElement('slot');
-
-    this.$container.setAttribute('class', 'container');
-    this.$slot.setAttribute('name', 'column-slot');
-
-    this.$container.appendChild(this.$slot);
-
-    this.shadowRoot.append(this.initStyle(), this.$container);
-  }
-
-
-
-  updateSpan({ xxl, xl, lg, md, sm, xs }) {
-    this.shadowRoot.querySelector('style').textContent = `
+  updateStyleBySpan({ xxl, xl, lg, md, sm, xs }) {
+    this.$style.textContent = `
       :host {
         margin: 10px;
       }
@@ -139,30 +150,27 @@ export default class Column extends HTMLElement {
     `
   }
 
+  setSpan(span: SpanType) {
+    this.setAttribute('xxl', span.xxl);
+    this.setAttribute('xl', span.xl);
+    this.setAttribute('lg', span.lg);
+    this.setAttribute('md', span.md);
+    this.setAttribute('sm', span.sm);
+    this.setAttribute('xs', span.xs);
 
-  static createColumnSlot() {
-    const node = document.createElement('div');
-    node.setAttribute('slot', 'column-slot');
-
-    return node;
+    return this;
   }
 
-  static create(node, { xxl, xl, lg, md, sm, xs }) {
-    const $col = document.createElement('inte-column');
+  setContent(content: HTMLElement | string) {
+    this.$slot.replaceChildren();
 
-    $col.setAttribute('xxl', xxl);
-    $col.setAttribute('xl', xl);
-    $col.setAttribute('lg', lg);
-    $col.setAttribute('md', md);
-    $col.setAttribute('sm', sm);
-    $col.setAttribute('xs', xs);
+    const $slotChild = new IElement<HTMLDivElement>('div')
+      .setAttribute('slot', 'column-slot')
+      .append(content)
+      .getElement();
 
-    const slot = Column.createColumnSlot();
-
-    slot.append(node);
-    $col.append(slot);
-
-    return $col;
+    this.$slot.append($slotChild);
+    return this;
   }
 }
 

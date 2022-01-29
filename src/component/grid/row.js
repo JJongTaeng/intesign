@@ -1,4 +1,4 @@
-export default class Row extends HTMLElement{
+export default class Row extends HTMLElement {
   static get observedAttributes() {
     return ['style'];
   }
@@ -18,6 +18,7 @@ export default class Row extends HTMLElement{
 
     return $row;
   }
+
   static createRowSlot() {
     const node = document.createElement('div');
     node.setAttribute('slot', 'row-slot');
@@ -40,6 +41,7 @@ export default class Row extends HTMLElement{
 
     return $row;
   }
+
   $container
 
   constructor() {
@@ -47,16 +49,16 @@ export default class Row extends HTMLElement{
     this.attachShadow({ mode: "open" });
     this.createElement();
 
-    this.shadowRoot.append( this.initStyle(), this.$container);
+    this.shadowRoot.append(this.initStyle(), this.$container);
 
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-      switch (name) {
-        case 'style':
-          this.updateStyle(newValue);
-          break;
-      }
+    switch (name) {
+      case 'style':
+        this.updateStyle(newValue);
+        break;
+    }
   }
 
   connectedCallback() {

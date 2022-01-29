@@ -21,7 +21,7 @@ export default class Message extends HTMLElement {
 
   constructor() {
     super();
-    this.attachShadow({ mode: "open"});
+    this.attachShadow({ mode: "open" });
 
     this.createElement();
     this.setClassName();
@@ -39,14 +39,14 @@ export default class Message extends HTMLElement {
         this.$content.textContent = newValue;
         break;
       case 'type':
-        if(newValue === 'info') {
+        if (newValue === 'info') {
           this.$content.style.color = 'dodgerblue';
-        } else if(newValue === 'error') {
+        } else if (newValue === 'error') {
           this.$content.style.color = 'crimson';
         }
         break;
       case 'visible':
-        if(newValue === 'open') {
+        if (newValue === 'open') {
           this.$container.style.transform = 'scale(1, 1)';
         } else {
           this.$container.style.transform = 'scale(1, 0)';
