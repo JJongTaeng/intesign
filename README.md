@@ -121,7 +121,7 @@ Card.create('Title', `
 ```javascript
 const $modal = Modal.create();
 
-Modal.appendBody($modal, Row.create(
+Modal.body($modal, Row.create(
   Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
   Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),
   Column.create(Card.create('hello', 'intae'), { xxl: 4, xl: 8, lg: 8, md: 8, sm: 12, xs: 24 }),

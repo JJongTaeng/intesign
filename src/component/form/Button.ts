@@ -45,8 +45,9 @@ export default class Button extends HTMLElement implements HTMLInteButtonElement
       )
       .getElement();
 
-    this.$button = new IElement<HTMLButtonElement>('button')
+    this.$button = new IElement<HTMLButtonElement>('input')
       .setAttribute('class', 'button')
+      .setAttribute('type', 'button')
       .getElement();
 
     this.shadowRoot.append(this.$style, this.$button);
@@ -59,7 +60,7 @@ export default class Button extends HTMLElement implements HTMLInteButtonElement
   attributeChangedCallback(name: string, oldValue: string, newValue: string) {
     switch(name) {
       case 'name':
-        this.$button.textContent = newValue;
+        this.$button.setAttribute('value', newValue);
         break;
       case 'size':
         if(newValue === 'large') {
