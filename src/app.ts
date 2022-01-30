@@ -1,10 +1,4 @@
-import Card from './component/card/Card';
-import Row from "./component/grid/Row";
-import Column from "./component/grid/Column";
-import Button from "./component/form/Button";
-import PopConfirm from "./component/popconfirm/PopConfirm";
-import Message from "./component/message/Message";
-import Modal from "./component/modal/Modal";
+import { Card, Row, Column, Button, PopConfirm, Message, Modal } from 'intesign';
 
 const card = new Card()
 new Row();
