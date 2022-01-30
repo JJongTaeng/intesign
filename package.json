@@ -46,7 +46,6 @@
     "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
-    "intesign": "^1.0.2",
     "jit-grid": "^1.0.5"
   }
 }
