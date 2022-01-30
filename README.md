@@ -8,7 +8,7 @@ Vanilla JavaScript 디자인 오픈소스 라이브러리
 
 # Use direct reference
 
-`import { Row, Column, Message, Input, Modal, Card } from './node_modules/intesign/src/index.js';`
+`import { Row, Column, Message, Input, Modal, Card } from './node_modules/intesign/src/index.ts';`
 
 # Bundling environment
 
@@ -239,7 +239,7 @@ Modal.onOk($modal, (e) => {
 ```
 
 ```javascript
-import { Card, Column, Message, Modal, Row } from './index.js';
+import { Card, Column, Message, Modal, Row } from './index.ts';
 
 // Column.create(Card.create('Hello', 'Intae'), {xxl: 8, xl: 8, lg: 8, md: 8, sm: 8, xs: 24}),
 const $modal = Modal.create();
