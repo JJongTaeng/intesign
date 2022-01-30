@@ -10,10 +10,10 @@
     "moduleResolution": "node"
     // 모듈 import 시 에러 제거
   },
-  "include": [
-    "src/",
-    "website/"
-  ],
+//  "include": [
+//    "src/",
+//    "website/"
+//  ],
   "exclude": [
     "website/app.ts"
   ]

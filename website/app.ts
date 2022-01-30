@@ -1,4 +1,5 @@
 import { Card, Row, Column, Button, PopConfirm, Message, Modal } from 'intesign';
+import './index.css';
 
 const card = new Card()
 new Row();
@@ -32,7 +33,5 @@ modal
   .onOk(() => {
     modal.close();
   })
-
-
 
 document.body.append(modal);
