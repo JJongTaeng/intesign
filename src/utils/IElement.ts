@@ -5,10 +5,13 @@ interface IEInterface {
   appendChild(node: Node): this;
 }
 
+type CustomTag = 'inte-button' | 'inte-input' | 'inte-row' | 'inte-column';
+type IElementTag = keyof HTMLElementTagNameMap | CustomTag;
+
 export default class IElement<T extends HTMLElement> implements IEInterface {
   private readonly $element: T;
 
-  constructor(tag: keyof HTMLElementTagNameMap) {
+  constructor(tag: IElementTag) {
     this.$element = document.createElement(tag) as T;
   }
 

@@ -1,6 +1,6 @@
 import IElement from "../../utils/IElement";
 
-export default class Input extends HTMLElement {
+export default class Input extends HTMLInputElement {
   static get observedAttributes() {
     return ['type', 'style'];
   }
@@ -35,4 +35,4 @@ export default class Input extends HTMLElement {
   }
 }
 
-customElements.define('inte-input', Input);
+customElements.define('inte-input', Input,  { extends: 'input' });

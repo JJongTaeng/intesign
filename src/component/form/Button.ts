@@ -1,6 +1,11 @@
 import IElement from "../../utils/IElement";
 
-export default class Button extends HTMLElement {
+export interface HTMLInteButtonElement extends HTMLElement {
+  setName(name: string): this;
+  setSize(size: 'small' | 'normal' | 'large'): this;
+}
+
+export default class Button extends HTMLElement implements HTMLInteButtonElement{
   static get observedAttributes() {
     return ['name', 'size', 'style'];
   }
