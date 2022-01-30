@@ -40,7 +40,7 @@ export default class Message extends HTMLElement {
         break;
       case 'type':
         if(newValue === 'info') {
-          this.$content.style.color = 'dodgerblue';
+          this.$content.style.color = '#00A6FF';
         } else if(newValue === 'error') {
           this.$content.style.color = 'crimson';
         }

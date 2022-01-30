@@ -19,7 +19,7 @@ export default class Input extends HTMLInputElement {
           height: 30px;
           min-width: 120px;
           border-radius: 2px;
-          border: 1px solid dodgerblue;
+          border: 1px solid #00A6FF;
         }
       `)
       .getElement();

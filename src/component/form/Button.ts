@@ -23,11 +23,12 @@ export default class Button extends HTMLElement implements HTMLInteButtonElement
         `
           .button {
             height: 30px;
-            background: dodgerblue;
-            border: 1px solid dodgerblue;
+            background: #00A6FF;
+            border: 0;
             color: white;
             transition: 0.2s;
             cursor: pointer;
+            border-radius: 2px;
           }
           .button.large {
             height: 35px;
@@ -37,8 +38,8 @@ export default class Button extends HTMLElement implements HTMLInteButtonElement
           }
           
           .button:hover {
-            background: white;
-            color: black;
+            background: #50C2FF;
+            color: white;
           }
         `
       )

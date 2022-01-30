@@ -1,5 +1,6 @@
 import { HTMLInteButtonElement } from "../form/Button";
 import IElement from "../../utils/IElement";
+import IStyle from "../../utils/IStyle";
 
 export default class PopConfirm extends HTMLElement {
   static get observedAttributes() {
@@ -55,6 +56,9 @@ export default class PopConfirm extends HTMLElement {
     this.$style = new IElement<HTMLStyleElement>('style')
       .setTextContent(
         `
+          :host {
+            display: flex;
+          }
           .container {
             position: absolute;
             display: flex;
@@ -63,8 +67,8 @@ export default class PopConfirm extends HTMLElement {
             background: white;
             padding: 10px;
             min-width: 160px;
-            box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, .4);
-            
+            box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, .4);
+            border-radius: 2px;
             transform-origin: 0 0;
             transform: scale(0, 0);
             opacity: 0;
@@ -101,21 +105,15 @@ export default class PopConfirm extends HTMLElement {
     switch(name) {
       case 'visible':
         if(newValue === 'true') {
-          this.updateStyle`
-            .container {
-              left: ${this.mousePosition.x}px;
-              top: ${this.mousePosition.y}px;
-              transform: scale(1, 1);
-              opacity: 1;
-            }
-          `;
+          new IStyle(this.$container)
+            .opacity('1')
+            .transform('scale(1, 1)')
+            .top(`${this.mousePosition.y}px`)
+            .left(`${this.mousePosition.x}px`);
         } else {
-          this.updateStyle`
-            .container {
-              transform: scale(0, 0);
-              opacity: 0;
-            }
-          `;
+          new IStyle(this.$container)
+            .opacity('0')
+            .transform('scale(0, 0)')
         }
         break;
       case 'oktext':
@@ -126,9 +124,6 @@ export default class PopConfirm extends HTMLElement {
         break;
       case 'message':
         this.$message.textContent = newValue;
-        break;
-      case 'style':
-        this.updateStyle`${newValue}`;
         break;
     }
   }
@@ -154,16 +149,6 @@ export default class PopConfirm extends HTMLElement {
     this.mousePosition.y = e.pageY;
   }
 
-  updateStyle(style, ...arg) {
-    const raw = style.raw.reduce((prev, current, index) => {
-      if(arg.length > 0) {
-        return prev + arg[index - 1] + current
-      } else {
-        return prev + current;
-      }
-    });
-    this.$style.textContent = this.$style.textContent + raw;
-  }
 }
 
 customElements.define('inte-popconfirm', PopConfirm);

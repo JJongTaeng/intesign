@@ -3,6 +3,8 @@ interface IEInterface {
   append(nodes: string | Node[]): this;
   clearChildren(): this;
   appendChild(node: Node): this;
+  setParent(node: HTMLElement): this;
+  setTextContent(text: string): this;
 }
 
 type CustomTag = 'inte-button' | 'inte-input' | 'inte-row' | 'inte-column';
