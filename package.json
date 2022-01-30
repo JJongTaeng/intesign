@@ -1,6 +1,6 @@
 {
   "name": "intesign",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Intesign is Vanilla JavaScript Design Library",
   "main": "dist/index.ts",
   "type": "commonjs",
