@@ -2,8 +2,11 @@
   "name": "intesign",
   "version": "1.0.4",
   "description": "Intesign is Vanilla JavaScript Design Library",
-  "main": "dist/index.ts",
-  "type": "commonjs",
+  "files": [
+    "dist/"
+  ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "webpack": "webpack",
@@ -16,9 +19,6 @@
     "type": "git",
     "url": "git+https://github.com/JJongTaeng/intesign.git"
   },
-  "files": [
-    "src/component"
-  ],
   "keywords": [
     "intesign"
   ],
@@ -46,6 +46,6 @@
     "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
-    "jit-grid": "^1.0.5"
+    "intesign": "^1.0.4"
   }
 }
