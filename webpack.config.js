@@ -3,9 +3,13 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/app.ts',
+  entry: './website/app.ts',
   resolve: {
     extensions: [".ts", ".js"]
+  },
+  output: {
+    filename: 'app.js',
+    path: path.resolve(__dirname, './build')
   },
   module: {
     rules: [
@@ -19,6 +23,6 @@ module.exports = {
     hot: true,
   },
   plugins: [new HtmlWebpackPlugin({
-    template: './src/index.html',
+    template: './website/index.html',
   })],
 };

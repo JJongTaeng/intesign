@@ -1,4 +1,4 @@
-import { Card, Row, Column, Button, PopConfirm, Message, Modal } from './index';
+import { Card, Row, Column, Button, PopConfirm, Message, Modal } from 'intesign';
 
 const card = new Card()
 new Row();

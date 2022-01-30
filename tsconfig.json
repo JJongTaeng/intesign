@@ -6,12 +6,15 @@
       "ES2020"
     ],
     "declaration": true,
-    "rootDir": "src",
+    "rootDir": "./",
     "moduleResolution": "node"
     // 모듈 import 시 에러 제거
   },
   "include": [
-    "src/"
+    "src/",
+    "website/"
   ],
-  "exclude": ["src/app.ts"]
+  "exclude": [
+    "website/app.ts"
+  ]
 }
