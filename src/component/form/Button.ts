@@ -29,6 +29,7 @@ export default class Button extends HTMLElement implements HTMLInteButtonElement
             transition: 0.2s;
             cursor: pointer;
             border-radius: 2px;
+            font-family : inherit;
           }
           .button.large {
             height: 35px;
