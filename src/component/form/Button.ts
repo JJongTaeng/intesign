@@ -54,9 +54,9 @@ export default class Button extends HTMLElement implements HTMLInteButtonElement
     this.shadowRoot.append(this.$style, this.$button);
   }
 
-  connectedCallback() {
-    this.setAttribute('size', 'normal');
-  }
+  // connectedCallback() {
+  //   this.setAttribute('size', 'normal');
+  // }
 
   attributeChangedCallback(name: string, oldValue: string, newValue: string) {
     switch(name) {

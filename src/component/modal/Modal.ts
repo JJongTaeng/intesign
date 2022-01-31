@@ -122,6 +122,11 @@ export default class Modal extends HTMLElement {
     this.shadowRoot.append(this.$style, this.$container);
   }
 
+  connectedCallback() {
+    console.log('connected');
+    this.close();
+  }
+
   attributeChangedCallback(name, oldValue, newValue) {
     switch(name) {
       case 'visible':
@@ -202,11 +207,9 @@ export default class Modal extends HTMLElement {
   }
 
   visible(visible) {
-    console.log(visible);
     this.setAttribute('visible', visible);
     return this;
   }
-
 }
 
 customElements.define('inte-modal', Modal);

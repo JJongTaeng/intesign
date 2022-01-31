@@ -6,7 +6,10 @@ import Row from "./component/grid/Row";
 import Message from "./component/message/Message";
 import Modal from "./component/modal/Modal";
 import PopConfirm from "./component/popconfirm/PopConfirm";
+import IElement from "./utils/IElement";
+import IStyle from "./utils/IStyle";
+
 
 export {
-  Row, Column, Card, Modal, Message, Input, PopConfirm, Button
+  Row, Column, Card, Modal, Message, Input, PopConfirm, Button, IElement, IStyle
 }

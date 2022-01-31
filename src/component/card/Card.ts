@@ -1,5 +1,10 @@
 import IElement from "../../utils/IElement";
 
+interface CardConstructorProps {
+  body?: HTMLElement | string;
+  header?: HTMLElement | string;
+}
+
 export default class Card extends HTMLElement {
   static get observedAttributes() {
     return ['style'];
@@ -14,7 +19,7 @@ export default class Card extends HTMLElement {
   private readonly $slotBody: HTMLSlotElement;
   private readonly $style: HTMLStyleElement;
 
-  constructor() {
+  constructor(props?: CardConstructorProps) {
     super();
     this.attachShadow({ mode: "open" });
 
@@ -54,6 +59,9 @@ export default class Card extends HTMLElement {
       .getElement();
 
     this.shadowRoot?.append(this.initStyle(), this.$cardContainer);
+
+    props?.body && this.setBody(props.body);
+    props?.header && this.setHeader(props.header);
   }
 
   attributeChangedCallback(name: string, oldValue: string, newValue: string): void {
@@ -91,6 +99,8 @@ export default class Card extends HTMLElement {
             padding: 8px;
         }
         .card-body-content {
+          font-size: 14px;
+          color: #333;
         }
     `
 
@@ -98,7 +108,7 @@ export default class Card extends HTMLElement {
   }
 
   get body(): HTMLElement {
-    return this.$slotBody;
+    return this.$cardBodyContent;
   }
 
   setBody(content: HTMLElement | string) {
@@ -114,7 +124,7 @@ export default class Card extends HTMLElement {
   }
 
   get header(): HTMLElement {
-    return this.$slotHeader;
+    return this.$cardHeaderContent;
   }
 
   setHeader(content: HTMLElement | string) {

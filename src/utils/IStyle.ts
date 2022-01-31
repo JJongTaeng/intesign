@@ -197,6 +197,11 @@ export default class IStyle implements IStyleInterface {
     return this;
   }
 
+  whiteSpace(value: string) {
+    this.$element.style.whiteSpace = value;
+    return this;
+  }
+
   setStyle(value: string) {
     this.$element.setAttribute('style', value);
     return this;

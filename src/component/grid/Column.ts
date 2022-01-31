@@ -6,6 +6,11 @@ interface ColumnInterface {
   updateStyleBySpan(span: SpanType): void;
 }
 
+interface ColumnConstructorProps {
+  span?: SpanType;
+  children?: HTMLElement | string;
+}
+
 type ColumnAttributeType = 'xxl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'style'
 
 interface SpanType {
@@ -35,7 +40,7 @@ export default class Column extends HTMLElement implements ColumnInterface {
     xs: '',
   }
 
-  constructor() {
+  constructor({ children, span }: ColumnConstructorProps) {
     super();
     this.attachShadow({ mode: 'open' });
 
@@ -49,9 +54,10 @@ export default class Column extends HTMLElement implements ColumnInterface {
       .getElement();
 
     this.$style = document.createElement('style');
-
     this.shadowRoot.append(this.$style, this.$container);
 
+    children && this.setContent(children);
+    span && this.setSpan(span);
   }
 
   connectedCallback() {
