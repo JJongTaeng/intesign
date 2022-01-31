@@ -1,4 +1,5 @@
-import { Card, Column, IElement, IStyle, Row } from "../src/index";
+import { Card, Column, Row } from "../src/index";
+import { IElement, IStyle } from 'common-iutils';
 
 export default function makeGridExample() {
   const $pre = document.createElement('pre');
@@ -34,7 +35,7 @@ export default function makeGridExample() {
   const wrapper = document.querySelector('.grid-wrapper');
   wrapper.append($descriptionCard);
 
-  const $generateButton = document.querySelector('inte-button[name="Generate"]');
+  const $generateButton = document.querySelector('#newRow');
   const $generateWrapper = document.querySelector('.generate-wrapper');
   const $card1 = new Card({
     body: '웹 컴포넌트 표준의 주요 기능 중 하나는 HTML 페이지에 커스텀 페이지 기능을 함께 제공하는 엘리먼트의 길고 중첩된 묶음을 만드는 것보다 사용자의 기능이 캡슐화된 커스텀 엘리먼트를 생성하는 기능입니다. 이 문서는 HTML 커스텀 엘리먼트의 사용을 소개합니다.',

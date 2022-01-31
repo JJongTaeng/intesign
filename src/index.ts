@@ -1,15 +1,11 @@
-import Card from "./component/card/Card";
-import Button from "./component/form/Button";
-import Input from "./component/form/Input";
-import Column from "./component/grid/Column";
-import Row from "./component/grid/Row";
-import Message from "./component/message/Message";
-import Modal from "./component/modal/Modal";
-import PopConfirm from "./component/popconfirm/PopConfirm";
-import IElement from "./utils/IElement";
-import IStyle from "./utils/IStyle";
-
+import { Modal } from "common-imodal";
+import { PopConfirm } from "common-ipopconfirm";
+import { IElement, IStyle } from 'common-iutils';
+import { Button, Input } from 'common-iform';
+import { Alert } from "common-ialert";
+import { Row, Column } from "common-igrid";
+import { Card } from 'common-icard';
 
 export {
-  Row, Column, Card, Modal, Message, Input, PopConfirm, Button, IElement, IStyle
+  Alert, Row, Column, Card, Modal, Input, PopConfirm, Button, IElement, IStyle
 }

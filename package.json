@@ -52,6 +52,12 @@
     "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
-    "intesign": "^1.0.5"
+    "common-ialert": "^1.0.4",
+    "common-icard": "^1.0.0",
+    "common-iform": "^1.0.6",
+    "common-igrid": "^1.0.0",
+    "common-imodal": "^1.0.0",
+    "common-ipopconfirm": "^1.0.0",
+    "common-iutils": "^1.0.3"
   }
 }

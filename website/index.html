@@ -11,7 +11,7 @@
 <div class="layout">
   <!-- Card -->
   <h1>Card Element</h1>
-  <div class="card-button-wrapper">
+  <div class="button-wrapper">
     <inte-button size="large" id="newCard" name="new Card()"></inte-button>
     <inte-button size="large" id="cardSetHeader" name="card.setHeader('I`m Title')"></inte-button>
     <inte-button size="large" id="cardSetBody" name="card.setBody('Some Text')"></inte-button>
@@ -23,11 +23,32 @@
   <h1>Grid Element(Row, Column)</h1>
   <div class="grid-wrapper"></div>
   <br>
-  <div class="card-button-wrapper">
+  <div class="button-wrapper">
     <inte-button size="large" id="newRow" name="Generate"></inte-button>
   </div>
   <div class="generate-wrapper"></div>
-
+  <hr style="width: 100%">
+  <!-- Message -->
+  <h1>Message</h1>
+  <div class="button-wrapper">
+    <inte-button size="large" id="messageSetMessage" name="message.setMessage('This is message')"></inte-button>
+    <inte-button size="large" id="messageVisibleTrue" name="message.visible(true)"></inte-button>
+    <inte-button size="large" id="messageVisibleFalse" name="message.visible(false)"></inte-button>
+    <inte-button size="large" id="messageTypeInfo" name="message.type('info')"></inte-button>
+    <inte-button size="large" id="messageTypeError" name="message.type('error')"></inte-button>
+  </div>
+  <hr style="width: 100%">
+  <!-- PopConfirm -->
+  <h1>PopConfirm</h1>
+  <div class="popconfirm-example-wrapper"></div>
+  <br>
+  <div id="popconfirmButton" class="button-wrapper">
+  </div>
+  <hr style="width: 100%">
+  <h1>Modal</h1>
 </div>
+<footer>
+  <div>Thanks for looking at my code</div>
+</footer>
 </body>
 </html>
